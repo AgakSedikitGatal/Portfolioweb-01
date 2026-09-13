@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raihan Adz Dzikra | Law, Tech & Media Innovator</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind Configuration for Warm Natural Earth Palette -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            natural: {
+              50: '#FAF8F5',
+              100: '#F5EFEB',
+              200: '#E8DFD8',
+              300: '#D5C7BD',
+              400: '#A99484',
+              500: '#7E6B5D',
+              600: '#5F4F43',
+              700: '#483B32',
+              800: '#322923',
+              900: '#1F1916',
+            },
+            sage: {
+              50: '#F4F7F4',
+              100: '#E5EBE5',
+              200: '#CCD8CD',
+              300: '#A9BFA9',
+              400: '#819E82',
+              500: '#5C7E5E', // primary natural green
+              600: '#476348',
+              700: '#384E39',
+              800: '#2C3E2D',
+              900: '#1C271D',
+            },
+            terracotta: {
+              50: '#FDF7F4',
+              100: '#F8ECE6',
+              200: '#F1D8CB',
+              300: '#E5BAA4',
+              400: '#D49273',
+              500: '#BC6C46',
+              600: '#A15433',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom subtle glassmorphism and animations */
+    .glass-nav {
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #CCD8CD;
+      border-radius: 9999px;
+    }
+    .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #384E39;
+    }
+  </style>
+</head>
+
+<body class="bg-[#FAF9F5] text-natural-800 dark:bg-[#151916] dark:text-[#EAE7E1] transition-colors duration-300 font-sans antialiased selection:bg-sage-200 selection:text-sage-900">
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-3 bg-natural-900 text-natural-50 dark:bg-sage-100 dark:text-natural-900 px-5 py-3 rounded-2xl shadow-xl text-sm font-medium border border-natural-700/20">
+    <i data-lucide="check-circle-2" class="w-5 h-5 text-sage-400 dark:text-sage-600"></i>
+    <span id="toast-message">Teks berhasil disalin!</span>
+  </div>
+
+  <!-- Navbar Header -->
+  <header class="fixed top-0 inset-x-0 z-40 transition-all duration-300 glass-nav bg-[#FAF9F5]/85 dark:bg-[#151916]/85 border-b border-natural-200/60 dark:border-white/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      <!-- Logo / Monogram -->
+      <a href="#hero" class="group flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-sage-500 text-white flex items-center justify-center font-serif text-lg font-bold shadow-sm transition group-hover:scale-105 group-hover:bg-sage-600">
+          RD
+        </div>
+        <div class="flex flex-col">
+          <span class="font-serif font-semibold tracking-tight text-natural-900 dark:text-natural-50 text-base group-hover:text-sage-600 dark:group-hover:text-sage-400 transition">
+            Raihan Adz Dzikra
+          </span>
+          <span class="text-[11px] text-natural-500 dark:text-natural-400 font-medium tracking-wide uppercase">
+            Law & Tech Innovator
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-natural-600 dark:text-natural-300">
+        <a href="#about" class="hover:text-sage-600 dark:hover:text-sage-400 transition">Tentang</a>
+        <a href="#herblocx" class="hover:text-sage-600 dark:hover:text-sage-400 transition">HerblocX</a>
+        <a href="#achievements" class="hover:text-sage-600 dark:hover:text-sage-400 transition">Prestasi</a>
+        <a href="#experience" class="hover:text-sage-600 dark:hover:text-sage-400 transition">Pengalaman</a>
+        <a href="#gallery" class="hover:text-sage-600 dark:hover:text-sage-400 transition">Dokumentasi</a>
+        <a href="#contact" class="hover:text-sage-600 dark:hover:text-sage-400 transition">Kontak</a>
+      </nav>
+
+      <!-- Action Utilities: Theme Toggle & Quick CTA -->
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" aria-label="Ganti Tema" class="p-2.5 rounded-full text-natural-600 dark:text-natural-300 hover:bg-natural-200/50 dark:hover:bg-white/10 transition">
+          <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
+          <i data-lucide="sun" class="w-5 h-5 block dark:hidden"></i>
+        </button>
+
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded-full bg-sage-500 hover:bg-sage-600 text-white shadow-sm transition hover:shadow-md">
+          <span>Hubungi</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobile-menu-btn" aria-label="Buka Menu" class="md:hidden p-2 rounded-xl text-natural-700 dark:text-natural-200 hover:bg-natural-200/50 dark:hover:bg-white/10">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobile-menu" class="md:hidden hidden bg-[#FAF9F5] dark:bg-[#151916] border-b border-natural-200 dark:border-white/10 px-6 py-5 space-y-4">
+      <a href="#about" class="block text-natural-700 dark:text-natural-200 font-medium py-1" onclick="toggleMobileMenu()">Tentang</a>
+      <a href="#herblocx" class="block text-natural-700 dark:text-natural-200 font-medium py-1" onclick="toggleMobileMenu()">Inovasi: HerblocX</a>
+      <a href="#achievements" class="block text-natural-700 dark:text-natural-200 font-medium py-1" onclick="toggleMobileMenu()">Prestasi</a>
+      <a href="#experience" class="block text-natural-700 dark:text-natural-200 font-medium py-1" onclick="toggleMobileMenu()">Pengalaman</a>
+      <a href="#gallery" class="block text-natural-700 dark:text-natural-200 font-medium py-1" onclick="toggleMobileMenu()">Dokumentasi Keaktifan</a>
+      <a href="#contact" class="block text-natural-700 dark:text-natural-200 font-medium py-1" onclick="toggleMobileMenu()">Hubungi</a>
+    </div>
+  </header>
+
+  <main class="pt-24 md:pt-28">
+    <section id="hero" class="relative overflow-hidden py-16 md:py-28">
+      <!-- Decorative Background Orbs -->
+      <div class="absolute -top-24 -left-24 w-96 h-96 bg-sage-200/40 dark:bg-sage-900/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute top-1/2 -right-32 w-96 h-96 bg-terracotta-200/30 dark:bg-terracotta-900/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 relative">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Hero Copy -->
+          <div class="lg:col-span-7 space-y-6">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-natural-900 dark:text-natural-50 leading-[1.15] tracking-tight">
+              Menjembatani <span class="text-sage-600 dark:text-sage-400 italic">Hukum,</span> Inovasi Web3 & <span class="text-terracotta-500 dark:text-terracotta-400">Media Kreatif.</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-natural-600 dark:text-natural-300 font-normal leading-relaxed max-w-xl">
+              Saya <strong>Raihan Adz Dzikra</strong>, mahasiswa Fakultas Hukum Universitas Airlangga yang aktif berkompetisi di kancah nasional & internasional. Co-Founder & CTO <strong>HerblocX</strong> (Gold Medalist WYIE Malaysia & IPITEX Thailand) dengan pengalaman 5+ tahun dalam produksi konten multimedia dan strategi kepatuhan hukum digital.
+            </p>
+
+            <!-- Quick Action Badges -->
+            <div class="pt-2 flex flex-wrap gap-4 items-center">
+              <a href="#herblocx" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-sage-600 hover:bg-sage-700 text-white font-medium text-sm transition shadow-sm hover:shadow">
+                <span>Eksplorasi HerblocX</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+              
+              <button onclick="copyContact('Dzikraihan04@gmail.com', 'Email berhasil disalin!')" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-natural-100 dark:bg-white/5 border border-natural-300/80 dark:border-white/10 hover:border-sage-500 dark:hover:border-sage-400 text-natural-800 dark:text-natural-100 text-sm font-medium transition">
+                <i data-lucide="copy" class="w-4 h-4 text-sage-600 dark:text-sage-400"></i>
+                <span>Salin Email</span>
+              </button>
+            </div>
+
+            <!-- Verified Highlights Bar -->
+            <div class="pt-6 border-t border-natural-200 dark:border-white/10 grid grid-cols-3 gap-4">
+              <div>
+                <span class="block text-2xl sm:text-3xl font-serif font-bold text-natural-900 dark:text-natural-50">2x Gold</span>
+                <span class="text-xs text-natural-500 dark:text-natural-400">Medali Internasional (WYIE & IPITEX)</span>
+              </div>
+              <div>
+                <span class="block text-2xl sm:text-3xl font-serif font-bold text-natural-900 dark:text-natural-50">Top 8</span>
+                <span class="text-xs text-natural-500 dark:text-natural-400">Hult Prize Indonesia 2026</span>
+              </div>
+              <div>
+                <span class="block text-2xl sm:text-3xl font-serif font-bold text-natural-900 dark:text-natural-50">5+ Thn</span>
+                <span class="text-xs text-natural-500 dark:text-natural-400">Kreator & Sutradara Konten</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Visual Card -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative w-full max-w-sm">
+              <!-- Natural Decorative Frame -->
+              <div class="absolute inset-0 bg-sage-200 dark:bg-sage-800/40 rounded-3xl transform rotate-3 scale-105 -z-10 transition"></div>
+              
+              <div class="relative bg-white dark:bg-natural-800/90 rounded-3xl p-5 shadow-xl border border-natural-200 dark:border-white/10 overflow-hidden">
+                <div class="relative aspect-[4/5] rounded-2xl overflow-hidden bg-natural-100 dark:bg-natural-900">
+                  <img src="Photo_asset/web/hero-profile.jpg"
+                       alt="Potret Raihan Adz Dzikra"
+                       class="w-full h-full object-cover grayscale contrast-105 hover:grayscale-0 transition-all duration-700"
+                       onerror="this.src='https://placehold.co/600x750/5C7E5E/FAF9F5?text=Raihan+Adz+Dzikra'" />
+                  
+                  <div class="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-natural-900/90 via-natural-900/50 to-transparent text-white">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <p class="font-serif font-semibold text-lg leading-tight">Raihan Adz Dzikra</p>
+                        <p class="text-xs text-natural-300">Surabaya, Jawa Timur</p>
+                      </div>
+                      <span class="px-2.5 py-1 rounded-full bg-sage-500/80 backdrop-blur-sm text-[11px] font-medium uppercase tracking-wider">
+                        GPA 3.40
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-4 pt-3 flex items-center justify-between text-xs text-natural-500 dark:text-natural-400">
+                  <span class="flex items-center gap-1.5">
+                    <i data-lucide="award" class="w-4 h-4 text-terracotta-500"></i>
+                    IFIA & NRCT Innovator
+                  </span>
+                  <span class="flex items-center gap-1.5">
+                    <i data-lucide="book-open" class="w-4 h-4 text-sage-600"></i>
+                    FH UNAIR
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- About & Education Section -->
+    <section id="about" class="py-20 bg-natural-100/60 dark:bg-natural-900/40 border-y border-natural-200/80 dark:border-white/5">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <h2 class="text-xs uppercase tracking-widest font-semibold text-sage-600 dark:text-sage-400">Profil & Rekam Jejak</h2>
+          <p class="font-serif text-3xl sm:text-4xl font-bold text-natural-900 dark:text-natural-50">Menyatukan Legalitas, Tekno-Sains, dan Komunikasi Visual</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+          
+          <!-- Narrative Bio -->
+          <div class="md:col-span-7 bg-white dark:bg-natural-800 p-8 rounded-3xl border border-natural-200/80 dark:border-white/5 shadow-sm space-y-5">
+            <h3 class="font-serif text-2xl font-bold text-natural-900 dark:text-natural-100 flex items-center gap-3">
+              <i data-lucide="user-check" class="w-6 h-6 text-sage-500"></i>
+              Ringkasan Profil
+            </h3>
+            <p class="text-natural-600 dark:text-natural-300 text-sm leading-relaxed">
+              Mahasiswa Fakultas Hukum Universitas Airlangga yang berfokus mendalami persimpangan antara regulasi hukum dan inovasi teknologi digital modern. Sebagai Co-Founder & CTO HerblocX, memimpin perancangan kerangka kerja kepatuhan hukum komoditas ekspor, perlindungan merek DJKI, sertifikasi global (EUDR, FDA, JAS), sekaligus mengonseptualisasikan alur sistem Layer-2 Web3.
+            </p>
+            <p class="text-natural-600 dark:text-natural-300 text-sm leading-relaxed">
+              Didukung lebih dari lima tahun pengalaman profesional dalam produksi media (penyutradaraan, pilot drone berlisensi pengalaman, dan sinematografi), Raihan menggabungkan ketajaman analisis yuridis dengan kemampuan bercerita (*storytelling*) visual berdaya saing tinggi dalam kompetisi pitching bisnis internasional.
+            </p>
+          </div>
+
+          <!-- Education Cards -->
+          <div class="md:col-span-5 space-y-6">
+            <div class="bg-white dark:bg-natural-800 p-6 rounded-3xl border border-natural-200/80 dark:border-white/5 shadow-sm space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="px-3 py-1 rounded-full bg-sage-100 dark:bg-sage-900/60 text-sage-700 dark:text-sage-300 text-xs font-semibold">2025 - Sekarang</span>
+                <span class="text-xs font-semibold text-natural-500">Semester 3</span>
+              </div>
+              <div>
+                <h4 class="font-serif font-bold text-lg text-natural-900 dark:text-natural-100">Universitas Airlangga, Surabaya</h4>
+                <p class="text-xs text-sage-600 dark:text-sage-400 font-medium">Program Sarjana Ilmu Hukum (S.H.)</p>
+                <div class="mt-2 text-xs text-natural-500 space-y-1">
+                  <p>NIM: 131251383</p>
+                  <p class="font-semibold text-natural-700 dark:text-natural-300">IPK (GPA): 3.40 / 4.00</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white dark:bg-natural-800 p-6 rounded-3xl border border-natural-200/80 dark:border-white/5 shadow-sm space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="px-3 py-1 rounded-full bg-natural-100 dark:bg-white/5 text-natural-600 dark:text-natural-300 text-xs font-semibold">2020 - 2023</span>
+                <span class="text-xs font-semibold text-natural-500">Sidoarjo</span>
+              </div>
+              <div>
+                <h4 class="font-serif font-bold text-lg text-natural-900 dark:text-natural-100">SMA Progresif Bumi Shalawat</h4>
+                <p class="text-xs text-natural-600 dark:text-natural-400">Jurusan Ilmu Pengetahuan Sosial (IPS)</p>
+                <p class="text-xs text-natural-500 mt-2">Aktif memimpin divisi visual media & rekam jejak juara film pendek santri.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Innovation: HerblocX -->
+    <section id="herblocx" class="py-20 overflow-hidden">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="bg-gradient-to-br from-sage-900 to-natural-900 text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-2xl border border-sage-800">
+          <!-- Background Abstract Pattern -->
+          <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-sage-600/20 blur-2xl pointer-events-none"></div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            <div class="lg:col-span-7 space-y-6">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-sage-200 text-xs font-medium tracking-wide">
+                <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+                <span>Flagship Project & Startup Innovation</span>
+              </div>
+
+              <div class="space-y-2">
+                <div class="flex items-baseline gap-3">
+                  <h3 class="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-white">HerblocX</h3>
+                  <span class="text-sm text-sage-300 font-medium">Co-Founder & CTO</span>
+                </div>
+                <p class="text-xs text-sage-200/80 font-mono tracking-wide">2025 - Present | Blockchain & Agritech Traceability</p>
+              </div>
+
+              <p class="text-natural-200 text-sm leading-relaxed">
+                Marketplace B2B/B2C berbasis blockchain untuk ekspor dan impor komoditas herbal unggulan Indonesia. Dirancang khusus guna menjamin transparansi data, integritas transaksi, serta ketelusuran (*traceability*) produk dari petani lokal hingga pembeli mancanegara.
+              </p>
+
+              <!-- Technical & Legal Pillars -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div class="bg-white/5 p-4 rounded-2xl border border-white/10 space-y-2">
+                  <div class="flex items-center gap-2 text-sage-300 font-semibold text-xs">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i>
+                    <span>Legal & Compliance</span>
+                  </div>
+                  <p class="text-xs text-natural-300 leading-normal">
+                    Penyusunan strategi perlindungan hak merek DJKI serta pemetaan regulasi ekspor global (EUDR, FDA, JAS).
+                  </p>
+                </div>
+
+                <div class="bg-white/5 p-4 rounded-2xl border border-white/10 space-y-2">
+                  <div class="flex items-center gap-2 text-sage-300 font-semibold text-xs">
+                    <i data-lucide="layers" class="w-4 h-4"></i>
+                    <span>Web2 + Web3 Layer-2</span>
+                  </div>
+                  <p class="text-xs text-natural-300 leading-normal">
+                    Verifikasi dokumen anti-fraud terdesentralisasi, pelacakan real-time, dan asisten pembelian bertenaga AI.
+                  </p>
+                </div>
+              </div>
+
+              <div class="space-y-2 text-xs text-natural-300">
+                <p class="flex items-start gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-sage-400 mt-0.5 shrink-0"></i>
+                  <span><strong>Dual-Persona UX:</strong> Mengakomodasi petani lokal dengan literasi digital sederhana dan importir institusional internasional.</span>
+                </p>
+                <p class="flex items-start gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-sage-400 mt-0.5 shrink-0"></i>
+                  <span><strong>Global Pitching:</strong> Menulis proposal dan mempresentasikan business pitch berbahasa Inggris di hadapan panel juri internasional di Malaysia & Thailand.</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Awards Showcase related to HerblocX -->
+            <div class="lg:col-span-5 bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/15 space-y-4">
+              <h4 class="font-serif font-bold text-lg text-white flex items-center gap-2">
+                <i data-lucide="trophy" class="w-5 h-5 text-terracotta-400"></i>
+                Validasi Prestasi HerblocX
+              </h4>
+
+              <div class="space-y-3">
+                <div class="p-3.5 rounded-2xl bg-black/20 border border-white/5 space-y-1">
+                  <div class="flex items-center justify-between text-xs font-semibold">
+                    <span class="text-terracotta-300">Gold Medal</span>
+                    <span class="text-natural-400">Bangkok, 2026</span>
+                  </div>
+                  <p class="text-sm font-medium text-white">IPITEX 2026 Thailand</p>
+                  <p class="text-[11px] text-natural-300">Organized by NRCT under IFIA, BITEC Bangkok.</p>
+                </div>
+
+                <div class="p-3.5 rounded-2xl bg-black/20 border border-white/5 space-y-1">
+                  <div class="flex items-center justify-between text-xs font-semibold">
+                    <span class="text-terracotta-300">Gold Medal (IoT)</span>
+                    <span class="text-natural-400">Kuala Lumpur, 2025</span>
+                  </div>
+                  <p class="text-sm font-medium text-white">WYIE 2025 Malaysia</p>
+                  <p class="text-[11px] text-natural-300">World Young Inventors Exhibition at ITEX KL.</p>
+                </div>
+
+                <div class="p-3.5 rounded-2xl bg-black/20 border border-white/5 space-y-1">
+                  <div class="flex items-center justify-between text-xs font-semibold">
+                    <span class="text-sage-300">Top 8 Finalist</span>
+                    <span class="text-natural-400">Bandung, 2026</span>
+                  </div>
+                  <p class="text-sm font-medium text-white">Hult Prize Indonesia Summit</p>
+                  <p class="text-[11px] text-natural-300">Terpilih dari 2.000+ tim startup mahasiswa se-Indonesia di ITB.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-20 bg-natural-100/40 dark:bg-natural-900/20 border-t border-natural-200 dark:border-white/5">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div class="space-y-2">
+            <span class="text-xs uppercase tracking-widest font-semibold text-sage-600 dark:text-sage-400">Prestasi & Penghargaan</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-natural-900 dark:text-natural-50">Rekam Jejak Kompetisi</h2>
+            <p class="text-sm text-natural-500 max-w-lg">Konsistensi dalam kompetisi inovasi global serta produksi konten visual sejak tingkat sekolah menengah.</p>
+          </div>
+
+          <!-- Achievement Category Filter Buttons -->
+          <div class="flex flex-wrap gap-2 p-1.5 rounded-2xl bg-natural-200/60 dark:bg-white/5 w-fit">
+            <button onclick="filterAchievements('all')" class="achieve-btn active px-4 py-2 rounded-xl text-xs font-semibold transition bg-white dark:bg-natural-800 shadow-sm text-natural-900 dark:text-natural-100" data-filter="all">Semua</button>
+            <button onclick="filterAchievements('international')" class="achieve-btn px-4 py-2 rounded-xl text-xs font-semibold transition text-natural-600 dark:text-natural-400 hover:text-natural-900" data-filter="international">Internasional</button>
+            <button onclick="filterAchievements('national')" class="achieve-btn px-4 py-2 rounded-xl text-xs font-semibold transition text-natural-600 dark:text-natural-400 hover:text-natural-900" data-filter="national">Nasional</button>
+            <button onclick="filterAchievements('regional')" class="achieve-btn px-4 py-2 rounded-xl text-xs font-semibold transition text-natural-600 dark:text-natural-400 hover:text-natural-900" data-filter="regional">Regional</button>
+          </div>
+        </div>
+
+        <!-- Grid of Achievements -->
+        <div id="achievements-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- IPITEX -->
+          <div class="achievement-card bg-white dark:bg-natural-800/90 p-6 rounded-3xl border border-natural-200/80 dark:border-white/5 shadow-sm space-y-4 hover:shadow-md transition group" data-category="international">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-terracotta-100 dark:bg-terracotta-900/40 text-terracotta-600 dark:text-terracotta-300 text-xs font-bold flex items-center gap-1.5">
+                <i data-lucide="medal" class="w-3.5 h-3.5"></i> Gold Medal
+              </span>
+              <span class="text-xs text-natural-400">Januari 2026</span>
+            </div>
+            <div>
+              <h3 class="font-serif font-bold text-lg text-natural-900 dark:text-natural-100 group-hover:text-sage-600 transition">IPITEX 2026 Thailand</h3>
+              <p class="text-xs text-sage-600 dark:text-sage-400 font-medium mt-0.5">Bangkok International IP & Invention Exposition</p>
+            </div>
+            <p class="text-xs text-natural-600 dark:text-natural-300 leading-relaxed">
+              Diselenggarakan oleh National Research Council of Thailand (NRCT) di bawah naungan IFIA di BITEC Bangkok. Inovasi: HerblocX.
+            </p>
+            <div class="pt-2 text-[11px] font-medium text-natural-400">Tingkat: Internasional (Thailand)</div>
+          </div>
+
+          <!-- WYIE ITEX -->
+          <div class="achievement-card bg-white dark:bg-natural-800/90 p-6 rounded-3xl border border-natural-200/80 dark:border-white/5 shadow-sm space-y-4 hover:shadow-md transition group" data-category="international">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-terracotta-100 dark:bg-terracotta-900/40 text-terracotta-600 dark:text-terracotta-300 text-xs font-bold flex items-center gap-1.5">
+                <i data-lucide="medal" class="w-3.5 h-3.5"></i> Gold Medal
+              </span>
+              <span class="text-xs text-natural-400">2025</span>
+            </div>
+            <div>
+              <h3 class="font-serif font-bold text-lg text-natural-900 dark:text-natural-100 group-hover:text-sage-600 transition">WYIE 2025 Malaysia</h3>
+              <p class="text-xs text-sage-600 dark:text-sage-400 font-medium mt-0.5">World Young Inventors Exhibition (IoT Category)</p>
+            </div>
+            <p class="text-xs text-natural-600 dark:text-natural-300 leading-relaxed">
+              Diselenggarakan bersamaan dengan International Invention, Innovation & Technology Exhibition (ITEX) di Kuala Lumpur. Inovasi: HerblocX.
+            </p>
+            <div class="pt-2 text-[11px] font-medium text-natural-400">Tingkat: Internasional (Malaysia)</div>
+          </div>
+
+          <!-- Hult Prize -->
+          <div class="achievement-card bg-white dark:bg-natural-800/90 p-6 rounded-3xl border border-natural-200/80 dark:border-white/5 shadow-sm space-y-4 hover:shadow-md transition group" data-category="national">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-sage-100 dark:bg-sage-900/40 text-sage-700 dark:text-sage-300 text-xs font-bold flex items-center gap-1.5">
+                <i data-lucide="award" class="w-3.5 h-3.5"></i> Top 8 Finalist
+              </span>
+              <span class="text-xs text-natural-400">Mei 2026</span>
+            </div>
+            <div>
+              <h3 class="font-serif font-bold text-lg text-natural-900 dark:text-natural-100 group-hover:text-sage-600 transition">Hult Prize Indonesia Summit</h3>
+              <p class="text-xs text-sage-600 dark:text-sage-400 font-medium mt-0.5">Institut Teknologi Bandung (ITB)</p>
+            </div>
+            <p class="text-xs text-natural-600 dark:text-natural-300 leading-relaxed">
+              Kompetisi startup mahasiswa terbesar di dunia; tim HerblocX terpilih sebagai Top 8 dari lebih dari 2.000 tim di tahap nasional.
+            </p>
+            <div class="pt-2 text-[11px] font-medium text-natural-400">Tingkat: Nasional</div>
+          </div>
+
+          <!-- UGM TikTok -->
+          <div class="achievement-card bg-white dark:bg-natural-800/90 p-6 rounded-3xl border border-natural-200/80 dark:border-white/5 shadow-sm space-y-4 hover:shadow-md transition group" data-category="national">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-natural-100 dark:bg-white/10 text-natural-700 dark:text-natural-300 text-xs font-bold flex items-center gap-1.5">
+                <i data-lucide="award" class="w-3.5 h-3.5"></i> 2nd Place
+              </span>
+              <span class="text-xs text-natural-400">2021</span>
+            </div>
+            <div>
+              <h3 class="font-serif font-bold text-lg text-natural-900 dark:text-natural-100 group-hover:text-sage-600 transition">TikTok Short Video UGM</h3>
+              <p class="text-xs text-sage-600 dark:text-sage-400 font-medium mt-0.5">Universitas Gadjah Mada</p>
+            </div>
+            <p class="text-xs text-natural-600 dark:text-natural-300 leading-relaxed">
+              Kompetisi pembuatan video pendek kreatif berbasis riset pesan dan sinematografi edukatif berskala nasional.
+            </p>
+            <div class="pt-2 text-[11px] font-medium text-natural-400">Tingkat: Nasional</div>
+          </div>
+
+          <!-- Wisata Bukit Mas -->
+          <div class="achievement-card bg-white dark:bg-natural-800/90 p-6 rounded-3xl border border-natural-200/80 dark:border-white/5 shadow-sm space-y-4 hover:shadow-md transition group" data-category="regional">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-terracotta-100 dark:bg-terracotta-900/40 text-terracotta-600 dark:text-terracotta-300 text-xs font-bold flex items-center gap-1.5">
+                <i data-lucide="trophy" class="w-3.5 h-3.5"></i> 1st Place
+              </span>
+              <span class="text-xs text-natural-400">2023</span>
+            </div>
+            <div>
+              <h3 class="font-serif font-bold text-lg text-natural-900 dark:text-natural-100 group-hover:text-sage-600 transition">Reels Competition Wisata Bukit Mas</h3>
+              <p class="text-xs text-sage-600 dark:text-sage-400 font-medium mt-0.5">Commercial & Cinematic Video</p>
+            </div>
+            <p class="text-xs text-natural-600 dark:text-natural-300 leading-relaxed">
+              Pemenang utama kompetisi video Reels kreatif dengan fokus visual arsitektural dan storytelling dinamis.
+            </p>
+            <div class="pt-2 text-[11px] font-medium text-natural-400">Tingkat: Regional</div>
+          </div>
+
+          <!-- Sidoarjo Vlog & Mansion Nine -->
+          <div class="achievement-card bg-white dark:bg-natural-800/90 p-6 rounded-3xl border border-natural-200/80 dark:border-white/5 shadow-sm space-y-4 hover:shadow-md transition group" data-category="regional">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-terracotta-100 dark:bg-terracotta-900/40 text-terracotta-600 dark:text-terracotta-300 text-xs font-bold flex items-center gap-1.5">
+                <i data-lucide="trophy" class="w-3.5 h-3.5"></i> 1st & 2nd Winner
+              </span>
+              <span class="text-xs text-natural-400">2021 & 2024</span>
+            </div>
+            <div>
+              <h3 class="font-serif font-bold text-lg text-natural-900 dark:text-natural-100 group-hover:text-sage-600 transition">Vlog & Reels Creative Wins</h3>
+              <p class="text-xs text-sage-600 dark:text-sage-400 font-medium mt-0.5">Sidoarjo Bunkasai & Mansion Nine</p>
+            </div>
+            <p class="text-xs text-natural-600 dark:text-natural-300 leading-relaxed">
+              Juara 1 Japanese Vlog Competition (Sidoarjo Bunkasai 2021) & Juara 2 Reels Competition Mansion Nine (2024).
+            </p>
+            <div class="pt-2 text-[11px] font-medium text-natural-400">Tingkat: Regional</div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Experience & Skills Section -->
+    <section id="experience" class="py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          
+          <!-- Experience Column -->
+          <div class="lg:col-span-7 space-y-8">
+            <div class="space-y-2">
+              <span class="text-xs uppercase tracking-widest font-semibold text-sage-600 dark:text-sage-400">Pengalaman Profesional, Organisasi & Ekstrakurikuler</span>
+              <h2 class="font-serif text-3xl font-bold text-natural-900 dark:text-natural-50">Pengabdian & Produksi Kreatif</h2>
+            </div>
+
+            <!-- Experience Timeline -->
+            <div class="relative pl-6 space-y-8 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-natural-300 dark:before:bg-white/10">
+              
+              <!-- Alpha Project -->
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1.5 w-3 h-3 rounded-full bg-sage-500 ring-4 ring-white dark:ring-natural-900"></span>
+                <div class="bg-white dark:bg-natural-800 p-6 rounded-2xl border border-natural-200/80 dark:border-white/5 shadow-sm space-y-2">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-sage-100 dark:bg-sage-900/40 text-sage-700 dark:text-sage-300 text-[11px] font-bold uppercase tracking-wide">
+                    <i data-lucide="briefcase" class="w-3 h-3"></i> Pekerjaan Profesional
+                  </span>
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <h3 class="font-serif font-bold text-base text-natural-900 dark:text-natural-100">Alpha Project - Digital Agency (@alphasosmed.project)</h3>
+                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-natural-100 dark:bg-white/5 text-natural-600 dark:text-natural-300">2024 - 2025</span>
+                  </div>
+                  <p class="text-xs text-sage-600 dark:text-sage-400 font-semibold">Head of Production / Content Director</p>
+                  <ul class="text-xs text-natural-600 dark:text-natural-300 list-disc list-inside space-y-1 pt-1">
+                    <li>Memimpin perencanaan konten mingguan klien korporat, perancangan struktur konten, dan konsep visual.</li>
+                    <li>Mengarahkan tim produksi dari tahap *brainstorming*, penulisan skrip, *filming*, hingga supervisi pascaproduksi/editing akhir.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Progresif TV -->
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1.5 w-3 h-3 rounded-full bg-sage-500 ring-4 ring-white dark:ring-natural-900"></span>
+                <div class="bg-white dark:bg-natural-800 p-6 rounded-2xl border border-natural-200/80 dark:border-white/5 shadow-sm space-y-2">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-terracotta-100 dark:bg-terracotta-900/40 text-terracotta-600 dark:text-terracotta-300 text-[11px] font-bold uppercase tracking-wide">
+                    <i data-lucide="users" class="w-3 h-3"></i> Organisasi Media
+                  </span>
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <h3 class="font-serif font-bold text-base text-natural-900 dark:text-natural-100">Progresif TV - Pondok Pesantren Bumi Shalawat</h3>
+                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-natural-100 dark:bg-white/5 text-natural-600 dark:text-natural-300">2020 - 2023</span>
+                  </div>
+                  <p class="text-xs text-sage-600 dark:text-sage-400 font-semibold">Director, Editor, Cameraman, Drone Pilot & Creative Director</p>
+                  <ul class="text-xs text-natural-600 dark:text-natural-300 list-disc list-inside space-y-1 pt-1">
+                    <li>Memproduksi program unggulan: *Senandung Santri, Yuk Ngaji,* dan *Kak Sholla*.</li>
+                    <li>Liputan udara (*drone pilot*) skala besar untuk acara Haul & Harlah Pondok Pesantren Bumi Shalawat.</li>
+                    <li>Video editor utama untuk peringatan Hari Santri Nasional 2022.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Smasif & Campus Expo -->
+              <div class="relative">
+                <span class="absolute -left-[27px] top-1.5 w-3 h-3 rounded-full bg-sage-500 ring-4 ring-white dark:ring-natural-900"></span>
+                <div class="bg-white dark:bg-natural-800 p-6 rounded-2xl border border-natural-200/80 dark:border-white/5 shadow-sm space-y-2">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-natural-200 dark:bg-white/10 text-natural-700 dark:text-natural-300 text-[11px] font-bold uppercase tracking-wide">
+                    <i data-lucide="graduation-cap" class="w-3 h-3"></i> Ekstrakurikuler SMA
+                  </span>
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <h3 class="font-serif font-bold text-base text-natural-900 dark:text-natural-100">Smasif Production & Campus Expo 2023</h3>
+                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-natural-100 dark:bg-white/5 text-natural-600 dark:text-natural-300">2020 - 2023</span>
+                  </div>
+                  <p class="text-xs text-sage-600 dark:text-sage-400 font-semibold">Director, Film Editor & Research Coordinator</p>
+                  <ul class="text-xs text-natural-600 dark:text-natural-300 list-disc list-inside space-y-1 pt-1">
+                    <li>Sutradara & editor film pendek: *Sentury Rewind, Stay Positive,* dan *The Tale of Ramayana*.</li>
+                    <li>Koordinator riset & desainer layout Campus Expo: Menyusun struktur media sosial dan siaran liputan langsung (*live reporting*).</li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Skills & Tooling Column -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="space-y-2">
+              <span class="text-xs uppercase tracking-widest font-semibold text-sage-600 dark:text-sage-400">Kompetensi Inti</span>
+              <h2 class="font-serif text-3xl font-bold text-natural-900 dark:text-natural-50">Keahlian & Kemampuan</h2>
+            </div>
+
+            <div class="bg-white dark:bg-natural-800 p-6 rounded-3xl border border-natural-200/80 dark:border-white/5 shadow-sm space-y-6">
+              
+              <!-- Legal & Tech -->
+              <div class="space-y-3">
+                <div class="flex items-center gap-2 text-sm font-bold text-natural-900 dark:text-natural-100">
+                  <i data-lucide="binary" class="w-4 h-4 text-sage-600 dark:text-sage-400"></i>
+                  <span>Teknologi & Legal-Tech</span>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1.5 rounded-xl bg-sage-50 dark:bg-sage-900/30 text-sage-800 dark:text-sage-200 text-xs font-medium border border-sage-200/60 dark:border-sage-800/40">Blockchain & Web3 Architecture</span>
+                  <span class="px-3 py-1.5 rounded-xl bg-sage-50 dark:bg-sage-900/30 text-sage-800 dark:text-sage-200 text-xs font-medium border border-sage-200/60 dark:border-sage-800/40">System Flow & UI/UX Logic</span>
+                  <span class="px-3 py-1.5 rounded-xl bg-sage-50 dark:bg-sage-900/30 text-sage-800 dark:text-sage-200 text-xs font-medium border border-sage-200/60 dark:border-sage-800/40">AI Prompt Engineering</span>
+                  <span class="px-3 py-1.5 rounded-xl bg-sage-50 dark:bg-sage-900/30 text-sage-800 dark:text-sage-200 text-xs font-medium border border-sage-200/60 dark:border-sage-800/40">Spreadsheet Automation</span>
+                  <span class="px-3 py-1.5 rounded-xl bg-sage-50 dark:bg-sage-900/30 text-sage-800 dark:text-sage-200 text-xs font-medium border border-sage-200/60 dark:border-sage-800/40">DJKI Trademark & Compliance</span>
+                </div>
+              </div>
+
+              <!-- Creative & Production -->
+              <div class="space-y-3 pt-4 border-t border-natural-100 dark:border-white/5">
+                <div class="flex items-center gap-2 text-sm font-bold text-natural-900 dark:text-natural-100">
+                  <i data-lucide="video" class="w-4 h-4 text-terracotta-500"></i>
+                  <span>Produksi Kreatif & Multimedia</span>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1.5 rounded-xl bg-natural-100 dark:bg-white/5 text-natural-800 dark:text-natural-200 text-xs font-medium">Adobe Premiere Pro</span>
+                  <span class="px-3 py-1.5 rounded-xl bg-natural-100 dark:bg-white/5 text-natural-800 dark:text-natural-200 text-xs font-medium">Adobe After Effects</span>
+                  <span class="px-3 py-1.5 rounded-xl bg-natural-100 dark:bg-white/5 text-natural-800 dark:text-natural-200 text-xs font-medium">Drone Cinematography</span>
+                  <span class="px-3 py-1.5 rounded-xl bg-natural-100 dark:bg-white/5 text-natural-800 dark:text-natural-200 text-xs font-medium">Motion Graphics & 3D Design</span>
+                  <span class="px-3 py-1.5 rounded-xl bg-natural-100 dark:bg-white/5 text-natural-800 dark:text-natural-200 text-xs font-medium">Canva & Visual Layout</span>
+                </div>
+              </div>
+
+              <!-- Languages -->
+              <div class="space-y-3 pt-4 border-t border-natural-100 dark:border-white/5">
+                <div class="flex items-center gap-2 text-sm font-bold text-natural-900 dark:text-natural-100">
+                  <i data-lucide="globe" class="w-4 h-4 text-sage-600 dark:text-sage-400"></i>
+                  <span>Bahasa & Komunikasi</span>
+                </div>
+                <div class="space-y-2 text-xs">
+                  <div class="flex justify-between items-center">
+                    <span class="text-natural-700 dark:text-natural-200 font-medium">Bahasa Indonesia</span>
+                    <span class="text-natural-500">Penutur Asli (Native)</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-natural-700 dark:text-natural-200 font-medium">Bahasa Inggris</span>
+                    <span class="text-natural-500">Professional Working (Pitching & Writing)</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Documentation / Keaktifan Gallery Section -->
+    <section id="gallery" class="py-20 bg-natural-100/40 dark:bg-natural-900/30 border-t border-natural-200/80 dark:border-white/5">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
+          <div class="space-y-2">
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-natural-900 dark:text-natural-50">Dokumentasi Kegiatan</h2>
+            <p class="text-sm text-natural-500 max-w-xl">
+              Dokumentasi pameran inovasi internasional, persidangan semu & akademik hukum, liputan drone, serta penyutradaraan media kreatif.
+            </p>
+          </div>
+
+          <!-- Controls: Category Filters & Add Photo CTA -->
+          <div class="flex flex-wrap items-center gap-3">
+            <div class="flex flex-wrap gap-1.5 p-1.5 rounded-2xl bg-natural-200/60 dark:bg-white/5">
+              <button onclick="filterGallery('all')" class="gallery-btn active px-3 py-1.5 rounded-xl text-xs font-semibold transition bg-white dark:bg-natural-800 text-natural-900 dark:text-natural-100" data-cat="all">Semua</button>
+              <button onclick="filterGallery('inovasi')" class="gallery-btn px-3 py-1.5 rounded-xl text-xs font-semibold transition text-natural-600 dark:text-natural-400" data-cat="inovasi">Inovasi & Pitch</button>
+              <button onclick="filterGallery('hukum')" class="gallery-btn px-3 py-1.5 rounded-xl text-xs font-semibold transition text-natural-600 dark:text-natural-400" data-cat="hukum">Akademik & Hukum</button>
+              <button onclick="filterGallery('kreatif')" class="gallery-btn px-3 py-1.5 rounded-xl text-xs font-semibold transition text-natural-600 dark:text-natural-400" data-cat="kreatif">Media & Drone</button>
+            </div>
+
+            <!-- Upload Interactive Button -->
+            <button onclick="openUploadModal()" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-sage-500 hover:bg-sage-600 text-white text-xs font-semibold shadow-sm transition">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+              <span>Tambah Foto</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Dynamic Items inserted by JS -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact & Branding Section -->
+    <section id="contact" class="py-24 relative overflow-hidden">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="bg-white dark:bg-natural-800/90 rounded-3xl p-8 sm:p-12 border border-natural-200 dark:border-white/10 shadow-lg text-center space-y-8">
+          
+          <div class="space-y-3 max-w-xl mx-auto">
+            <span class="text-xs uppercase tracking-widest font-semibold text-sage-600 dark:text-sage-400">Mari Berkolaborasi</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-natural-900 dark:text-natural-50">Tertarik Mendiskusikan Proyek, Inovasi, atau Kemitraan?</h2>
+            <p class="text-sm text-natural-600 dark:text-natural-300">
+              Terbuka untuk kolaborasi riset hukum teknologi, implementasi Web3, kompetisi startup, atau penyutradaraan konten kreatif.
+            </p>
+          </div>
+
+          <!-- Quick Contact Methods -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
+            
+            <!-- Email Item -->
+            <div class="p-5 rounded-2xl bg-natural-50 dark:bg-white/5 border border-natural-200/60 dark:border-white/5 flex items-center justify-between group">
+              <div class="space-y-1">
+                <span class="text-[11px] uppercase tracking-wider text-natural-400 font-semibold">Email Resmi</span>
+                <p class="text-sm font-medium text-natural-900 dark:text-natural-100 select-all">Dzikraihan04@gmail.com</p>
+              </div>
+              <button onclick="copyContact('Dzikraihan04@gmail.com', 'Email berhasil disalin!')" title="Salin Email" class="p-2.5 rounded-xl bg-white dark:bg-natural-700 shadow-xs hover:bg-sage-500 hover:text-white transition">
+                <i data-lucide="copy" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <!-- Phone Item -->
+            <div class="p-5 rounded-2xl bg-natural-50 dark:bg-white/5 border border-natural-200/60 dark:border-white/5 flex items-center justify-between group">
+              <div class="space-y-1">
+                <span class="text-[11px] uppercase tracking-wider text-natural-400 font-semibold">WhatsApp / Telepon</span>
+                <p class="text-sm font-medium text-natural-900 dark:text-natural-100 select-all">+62 851-7211-0196</p>
+              </div>
+              <button onclick="copyContact('+6285172110196', 'Nomor telepon disalin!')" title="Salin Kontak" class="p-2.5 rounded-xl bg-white dark:bg-natural-700 shadow-xs hover:bg-sage-500 hover:text-white transition">
+                <i data-lucide="copy" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Quick Location & Social Linklets -->
+          <div class="pt-6 border-t border-natural-100 dark:border-white/5 flex flex-wrap items-center justify-center gap-6 text-xs text-natural-500">
+            <span class="inline-flex items-center gap-1.5">
+              <i data-lucide="map-pin" class="w-4 h-4 text-terracotta-500"></i>
+              Surabaya, Jawa Timur, Indonesia
+            </span>
+            <span class="inline-flex items-center gap-1.5">
+              <i data-lucide="instagram" class="w-4 h-4 text-sage-600"></i>
+              @alphasosmed.project
+            </span>
+            <span class="inline-flex items-center gap-1.5">
+              <i data-lucide="briefcase" class="w-4 h-4 text-natural-600"></i>
+              Co-Founder HerblocX
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox Modal for Photo Inspection -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm items-center justify-center p-4">
+    <div class="relative max-w-3xl w-full bg-white dark:bg-natural-900 rounded-3xl overflow-hidden shadow-2xl border border-white/10 flex flex-col max-h-[90vh]">
+      <!-- Close Button -->
+      <button onclick="closeLightbox()" class="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 hover:bg-black/80 text-white transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="overflow-y-auto custom-scrollbar">
+        <div class="relative bg-black flex items-center justify-center max-h-[60vh] overflow-hidden">
+          <img id="lightbox-img" src="" alt="" class="w-full h-auto object-contain max-h-[60vh]">
+        </div>
+        <div class="p-6 space-y-2">
+          <div class="flex items-center justify-between">
+            <span id="lightbox-badge" class="px-2.5 py-1 rounded-full text-xs font-semibold bg-sage-100 text-sage-800">Kategori</span>
+            <span id="lightbox-date" class="text-xs text-natural-400">2026</span>
+          </div>
+          <h3 id="lightbox-title" class="font-serif font-bold text-xl text-natural-900 dark:text-natural-50">Judul Kegiatan</h3>
+          <p id="lightbox-desc" class="text-xs text-natural-600 dark:text-natural-300 leading-relaxed">Keterangan lengkap dokumentasi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Client-side Upload Photo Modal -->
+  <div id="upload-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-xs items-center justify-center p-4">
+    <div class="bg-white dark:bg-natural-900 rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-natural-200 dark:border-white/10 space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-serif font-bold text-lg text-natural-900 dark:text-natural-100">Tambah Foto Dokumentasi Baru</h3>
+        <button onclick="closeUploadModal()" class="p-1 rounded-lg hover:bg-natural-100 dark:hover:bg-white/5">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <p class="text-xs text-natural-500">Unggah foto kegiatan Anda secara langsung untuk dipratinjau dalam galeri portofolio ini.</p>
+
+      <form id="upload-form" onsubmit="handlePhotoUpload(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold mb-1 text-natural-700 dark:text-natural-300">File Foto (JPG/PNG)</label>
+          <input type="file" id="photo-file" accept="image/*" required class="w-full text-xs text-natural-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-sage-100 file:text-sage-700 hover:file:bg-sage-200 dark:file:bg-sage-900 dark:file:text-sage-200 cursor-pointer">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold mb-1 text-natural-700 dark:text-natural-300">Kategori</label>
+          <select id="photo-category" class="w-full p-2.5 rounded-xl border border-natural-200 dark:border-white/10 bg-natural-50 dark:bg-natural-800 text-xs text-natural-800 dark:text-natural-100 focus:outline-none focus:border-sage-500">
+            <option value="inovasi">Inovasi & Pitching (IPITEX, WYIE, Hult)</option>
+            <option value="hukum">Akademik & Fakultas Hukum UNAIR</option>
+            <option value="kreatif">Media Kreatif & Drone Filming</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold mb-1 text-natural-700 dark:text-natural-300">Judul Kegiatan</label>
+          <input type="text" id="photo-title" placeholder="Contoh: Pitching Session IPITEX Bangkok 2026" required class="w-full p-2.5 rounded-xl border border-natural-200 dark:border-white/10 bg-natural-50 dark:bg-natural-800 text-xs text-natural-800 dark:text-natural-100 focus:outline-none focus:border-sage-500">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold mb-1 text-natural-700 dark:text-natural-300">Keterangan / Deskripsi Singkat</label>
+          <textarea id="photo-desc" rows="3" placeholder="Jelaskan peran Anda, lokasi, atau momen penting dalam foto ini..." required class="w-full p-2.5 rounded-xl border border-natural-200 dark:border-white/10 bg-natural-50 dark:bg-natural-800 text-xs text-natural-800 dark:text-natural-100 focus:outline-none focus:border-sage-500"></textarea>
+        </div>
+
+        <div class="flex justify-end gap-2 pt-2">
+          <button type="button" onclick="closeUploadModal()" class="px-4 py-2 text-xs font-medium rounded-xl border border-natural-300 text-natural-700 dark:text-natural-300 hover:bg-natural-100">Batal</button>
+          <button type="submit" class="px-4 py-2 text-xs font-semibold rounded-xl bg-sage-500 hover:bg-sage-600 text-white shadow-sm">Tambahkan ke Galeri</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Initial sample documentation gallery based on CV accomplishments
+    let documentationData = [
+      {
+        id: 'doc-1',
+        title: 'Presentasi HerblocX - IPITEX Bangkok 2026',
+        category: 'inovasi',
+        categoryLabel: 'Inovasi & Pitch',
+        date: 'Januari 2026',
+        desc: 'Mempresentasikan inovasi sistem pelacakan berbasis blockchain HerblocX dan strategi kepatuhan hukum komoditas herbal di hadapan dewan juri internasional National Research Council of Thailand (NRCT).',
+        imgUrl: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        id: 'doc-2',
+        title: 'Booth & Ekshibisi WYIE Malaysia 2025',
+        category: 'inovasi',
+        categoryLabel: 'Inovasi & Pitch',
+        date: '2025',
+        desc: 'Sesi temu pembeli dan panel inovator di Kuala Lumpur Convention Centre. Raihan menjelaskan arsitektur Web3 Layer-2 dan validasi dokumen anti-fraud komoditas herbal.',
+        imgUrl: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        id: 'doc-3',
+        title: 'Aktivitas Akademik Fakultas Hukum UNAIR',
+        category: 'hukum',
+        categoryLabel: 'Akademik & Hukum',
+        date: '2025 - 2026',
+        desc: 'Riset regulasi perlindungan kekayaan intelektual (DJKI), standardisasi ekspor (EUDR & FDA), dan diskusi hukum teknologi informasi di lingkungan kampus UNAIR.',
+        imgUrl: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        id: 'doc-4',
+        title: 'National Summit Hult Prize 2026 di ITB',
+        category: 'inovasi',
+        categoryLabel: 'Inovasi & Pitch',
+        date: 'Mei 2026',
+        desc: 'Berkompetisi di East Auditorium ITB bersama tim HerblocX, lolos sebagai Top 8 Finalist dari 2.000+ tim di seluruh perguruan tinggi di Indonesia.',
+        imgUrl: 'Photo_asset/web/hultprize-summit-team.jpg'
+      },
+      {
+        id: 'doc-4b',
+        title: 'Demo Platform HerblocX di Hult Prize',
+        category: 'inovasi',
+        categoryLabel: 'Inovasi & Pitch',
+        date: 'Mei 2026',
+        desc: 'Mendemonstrasikan alur login dan akses pelacakan platform HerblocX di hadapan dewan juri dan peserta Hult Prize Indonesia Summit.',
+        imgUrl: 'Photo_asset/web/hultprize-summit-demo.jpg'
+      },
+      {
+        id: 'doc-4c',
+        title: 'Presentasi Marketplace HerblocX',
+        category: 'inovasi',
+        categoryLabel: 'Inovasi & Pitch',
+        date: 'Mei 2026',
+        desc: 'Memaparkan fitur marketplace komoditas herbal (harga, kategori produk, dan status stok) di panggung Hult Prize Indonesia Summit, ITB.',
+        imgUrl: 'Photo_asset/web/hultprize-summit-pitch.jpg'
+      },
+      {
+        id: 'doc-4d',
+        title: 'Final Pitch HerblocX - Hult Prize',
+        category: 'inovasi',
+        categoryLabel: 'Inovasi & Pitch',
+        date: 'Mei 2026',
+        desc: 'Sesi final pitch memaparkan kepatuhan kualitas, sertifikasi JAS, dan hasil uji laboratorium komoditas herbal HerblocX.',
+        imgUrl: 'Photo_asset/web/hultprize-final-pitch.jpg'
+      },
+      {
+        id: 'doc-5',
+        title: 'Operasi Drone & Liputan Acara Akbar',
+        category: 'kreatif',
+        categoryLabel: 'Media & Drone',
+        date: '2022 - 2023',
+        desc: 'Pengambilan gambar udara (*drone pilot*) untuk Haul, Harlah, serta Hari Santri Nasional bersama tim Progresif TV di Pondok Pesantren Bumi Shalawat.',
+        imgUrl: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        id: 'doc-6',
+        title: 'Penyutradaraan & Editing Film Smasif',
+        category: 'kreatif',
+        categoryLabel: 'Media & Drone',
+        date: '2021 - 2023',
+        desc: 'Proses penyutradaraan dan pascaproduksi film pendek *Sentury Rewind* & *The Tale of Ramayana*, memadukan audio storytelling dan grading visual.',
+        imgUrl: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=900&q=80'
+      }
+    ];
+
+    // Initialize Lucide Icons
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      renderGallery('all');
+    });
+
+    // Theme Toggle Functionality
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    themeToggleBtn.addEventListener('click', () => {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('hidden');
+    }
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    }
+
+    // Copy to Clipboard Utility with Toast
+    function copyContact(text, message) {
+      const tempInput = document.createElement('input');
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+
+      showToast(message || 'Teks berhasil disalin!');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.innerText = msg;
+      
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    // Achievements Filter
+    function filterAchievements(category) {
+      const buttons = document.querySelectorAll('.achieve-btn');
+      buttons.forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.classList.add('active', 'bg-white', 'dark:bg-natural-800', 'shadow-sm', 'text-natural-900', 'dark:text-natural-100');
+          btn.classList.remove('text-natural-600', 'dark:text-natural-400');
+        } else {
+          btn.classList.remove('active', 'bg-white', 'dark:bg-natural-800', 'shadow-sm', 'text-natural-900', 'dark:text-natural-100');
+          btn.classList.add('text-natural-600', 'dark:text-natural-400');
+        }
+      });
+
+      const cards = document.querySelectorAll('.achievement-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // Gallery Rendering
+    function renderGallery(filter = 'all') {
+      const container = document.getElementById('gallery-grid');
+      container.innerHTML = '';
+
+      const items = filter === 'all' ? documentationData : documentationData.filter(d => d.category === filter);
+
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = "bg-white dark:bg-natural-800 rounded-3xl overflow-hidden border border-natural-200/80 dark:border-white/5 shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer flex flex-col";
+        card.onclick = () => openLightbox(item);
+
+        card.innerHTML = `
+          <div class="relative aspect-[16/10] overflow-hidden bg-natural-100 dark:bg-natural-900">
+            <img src="${item.imgUrl}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.src='https://placehold.co/600x400/5C7E5E/FAF9F5?text=Dokumentasi+Raihan'" />
+            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-xs text-[11px] font-medium text-white">
+              ${item.categoryLabel}
+            </div>
+            <div class="absolute inset-0 bg-natural-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="p-2.5 rounded-full bg-white text-natural-900 shadow-md">
+                <i data-lucide="maximize-2" class="w-4 h-4"></i>
+              </span>
+            </div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <div class="flex items-center justify-between text-[11px] text-natural-400 mb-1">
+                <span>${item.date}</span>
+                <span class="text-sage-600 dark:text-sage-400 font-medium">Lihat Detail</span>
+              </div>
+              <h3 class="font-serif font-bold text-base text-natural-900 dark:text-natural-100 group-hover:text-sage-600 transition leading-snug">
+                ${item.title}
+              </h3>
+              <p class="text-xs text-natural-500 dark:text-natural-400 line-clamp-2 mt-1.5">
+                ${item.desc}
+              </p>
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+
+      lucide.createIcons();
+    }
+
+    function filterGallery(category) {
+      const buttons = document.querySelectorAll('.gallery-btn');
+      buttons.forEach(btn => {
+        if (btn.dataset.cat === category) {
+          btn.classList.add('active', 'bg-white', 'dark:bg-natural-800', 'shadow-sm', 'text-natural-900', 'dark:text-natural-100');
+          btn.classList.remove('text-natural-600', 'dark:text-natural-400');
+        } else {
+          btn.classList.remove('active', 'bg-white', 'dark:bg-natural-800', 'shadow-sm', 'text-natural-900', 'dark:text-natural-100');
+          btn.classList.add('text-natural-600', 'dark:text-natural-400');
+        }
+      });
+      renderGallery(category);
+    }
+
+    // Lightbox Handling
+    function openLightbox(item) {
+      const modal = document.getElementById('lightbox-modal');
+      document.getElementById('lightbox-img').src = item.imgUrl;
+      document.getElementById('lightbox-title').innerText = item.title;
+      document.getElementById('lightbox-desc').innerText = item.desc;
+      document.getElementById('lightbox-badge').innerText = item.categoryLabel;
+      document.getElementById('lightbox-date').innerText = item.date;
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // Upload Documentation Handling
+    function openUploadModal() {
+      const modal = document.getElementById('upload-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeUploadModal() {
+      const modal = document.getElementById('upload-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function handlePhotoUpload(e) {
+      e.preventDefault();
+      const fileInput = document.getElementById('photo-file');
+      const cat = document.getElementById('photo-category').value;
+      const title = document.getElementById('photo-title').value;
+      const desc = document.getElementById('photo-desc').value;
+
+      if (!fileInput.files || !fileInput.files[0]) return;
+
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const labels = {
+          'inovasi': 'Inovasi & Pitch',
+          'hukum': 'Akademik & Hukum',
+          'kreatif': 'Media & Drone'
+        };
+
+        const newItem = {
+          id: 'doc-' + Date.now(),
+          title: title,
+          category: cat,
+          categoryLabel: labels[cat] || 'Dokumentasi',
+          date: 'Baru ditambahkan',
+          desc: desc,
+          imgUrl: event.target.result
+        };
+
+        documentationData.unshift(newItem);
+        renderGallery('all');
+        closeUploadModal();
+        document.getElementById('upload-form').reset();
+        showToast('Foto dokumentasi berhasil dimasukkan ke galeri!');
+      };
+
+      reader.readAsDataURL(fileInput.files[0]);
+    }
+  </script>
+</body>
+</html>
