@@ -6,6 +6,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8934"],
       "port": 8934
+    },
+    {
+      "name": "deploy-check",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8935", "--directory", "deploy"],
+      "port": 8935
     }
   ]
 }

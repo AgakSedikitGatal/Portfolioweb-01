@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raihan Adz Dzikra | Law, Tech & Media Innovator</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Dark Social Theme with Warm Ember Accent -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            ink: {
+              950: '#000000',
+              900: '#0A0A0B',
+              850: '#121214',
+              800: '#1A1A1D',
+              750: '#202024',
+              700: '#2A2A2F',
+              600: '#3A3A41',
+              500: '#6E6E76',
+              400: '#8E8E96',
+              300: '#B4B4BC',
+              200: '#D8D8DE',
+              100: '#F2F2F4',
+            },
+            ember: {
+              50:  '#FFF5EE',
+              100: '#FFE7D6',
+              200: '#FFCBA8',
+              300: '#FFA872',
+              400: '#FF8541',
+              500: '#FF6B1A',
+              600: '#ED4F07',
+              700: '#C43C0A',
+              800: '#9B310F',
+              900: '#7C2A10',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ---- Glassmorphism 3D emoji icons ---- */
+    .glass-icon,
+    .glass-bubble {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      isolation: isolate;
+      background: linear-gradient(145deg, rgba(255,255,255,0.16), rgba(255,255,255,0.03));
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.16);
+      box-shadow:
+        0 10px 26px -10px rgba(255,107,26,0.55),
+        inset 0 1px 1px rgba(255,255,255,0.38),
+        inset 0 -3px 8px rgba(0,0,0,0.35);
+      transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease;
+    }
+    .glass-icon { border-radius: 28%; }
+    .glass-bubble { border-radius: 9999px; }
+
+    /* glossy sheen sweeping the top-left corner */
+    .glass-icon::before,
+    .glass-bubble::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(158deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.06) 42%, rgba(255,255,255,0) 62%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    /* warm glow pooling under the glass */
+    .glass-icon::after,
+    .glass-bubble::after {
+      content: '';
+      position: absolute;
+      inset: -35%;
+      border-radius: inherit;
+      background: radial-gradient(circle at 50% 115%, rgba(255,107,26,0.55), transparent 62%);
+      filter: blur(10px);
+      pointer-events: none;
+      z-index: -1;
+    }
+    .glass-icon > span,
+    .glass-bubble > span {
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 3px 5px rgba(0,0,0,0.55));
+      transform: translateZ(0);
+    }
+    .glass-icon:hover,
+    .glass-bubble:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow:
+        0 16px 34px -10px rgba(255,107,26,0.7),
+        inset 0 1px 1px rgba(255,255,255,0.45),
+        inset 0 -3px 8px rgba(0,0,0,0.35);
+    }
+
+    /* ---- Scrollbars ---- */
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #3A3A41; border-radius: 9999px; }
+
+    .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+
+    /* ---- Misc ---- */
+    .glass-nav {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    /* lucide swaps <i> for <svg>, so state lives on the button */
+    #post-like.liked svg { color: #FF3040; fill: #FF3040; }
+    #post-save.saved svg { color: #FF6B1A; fill: #FF6B1A; }
+  </style>
+</head>
+
+<body class="bg-ink-900 text-ink-100 font-sans antialiased selection:bg-ember-500 selection:text-white">
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-3 bg-ink-100 text-ink-900 px-5 py-3 rounded-2xl shadow-2xl text-sm font-semibold">
+    <i data-lucide="check-circle-2" class="w-5 h-5 text-ember-600"></i>
+    <span id="toast-message">Teks berhasil disalin!</span>
+  </div>
+
+  <!-- Top Bar -->
+  <header class="fixed top-0 inset-x-0 z-40 glass-nav bg-ink-900/80 border-b border-ink-700">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="#profile" class="group flex items-center gap-2.5">
+        <span class="w-9 h-9 rounded-full bg-gradient-to-tr from-ember-600 via-ember-500 to-ember-300 flex items-center justify-center font-serif text-sm font-bold text-white shadow-lg">RD</span>
+        <span class="font-semibold tracking-tight text-ink-100 group-hover:text-ember-400 transition">dzikraihan</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-ink-300">
+        <a href="#about" class="hover:text-ember-400 transition">Profil</a>
+        <a href="#herblocx" class="hover:text-ember-400 transition">HerblocX</a>
+        <a href="#achievements" class="hover:text-ember-400 transition">Prestasi</a>
+        <a href="#experience" class="hover:text-ember-400 transition">Pengalaman</a>
+        <a href="#gallery" class="hover:text-ember-400 transition">Dokumentasi</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-lg bg-ember-500 hover:bg-ember-600 text-white transition">
+          Hubungi
+        </a>
+        <button id="mobile-menu-btn" aria-label="Buka Menu" class="md:hidden p-2 rounded-lg text-ink-200 hover:bg-ink-800 transition">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden hidden bg-ink-850 border-b border-ink-700 px-6 py-4 space-y-3">
+      <a href="#about" class="block text-ink-200 font-medium py-1" onclick="toggleMobileMenu()">Profil</a>
+      <a href="#herblocx" class="block text-ink-200 font-medium py-1" onclick="toggleMobileMenu()">HerblocX</a>
+      <a href="#achievements" class="block text-ink-200 font-medium py-1" onclick="toggleMobileMenu()">Prestasi</a>
+      <a href="#experience" class="block text-ink-200 font-medium py-1" onclick="toggleMobileMenu()">Pengalaman</a>
+      <a href="#gallery" class="block text-ink-200 font-medium py-1" onclick="toggleMobileMenu()">Dokumentasi</a>
+      <a href="#contact" class="block text-ember-400 font-semibold py-1" onclick="toggleMobileMenu()">Hubungi</a>
+    </div>
+  </header>
+
+  <main class="pt-16">
+
+    <!-- ============ INSTAGRAM PROFILE HEADER ============ -->
+    <section id="profile" class="relative overflow-hidden">
+      <!-- warm ambient glow -->
+      <div class="absolute -top-40 left-1/4 w-96 h-96 rounded-full bg-ember-600/20 blur-[120px] pointer-events-none"></div>
+      <div class="absolute top-20 -right-20 w-80 h-80 rounded-full bg-ember-500/10 blur-[100px] pointer-events-none"></div>
+
+      <div class="relative max-w-5xl mx-auto px-4 sm:px-6 pt-10 pb-8">
+        <div class="flex flex-col sm:flex-row sm:items-start gap-8 sm:gap-12">
+
+          <!-- Avatar with story ring -->
+          <div class="shrink-0 mx-auto sm:mx-0">
+            <div class="p-[3px] rounded-full bg-gradient-to-tr from-ember-700 via-ember-500 to-ember-300">
+              <div class="p-[3px] rounded-full bg-ink-900">
+                <img src="Photo_asset/web/hero-profile.jpg"
+                     alt="Raihan Adz Dzikra"
+                     class="w-28 h-28 sm:w-40 sm:h-40 rounded-full object-cover"
+                     onerror="this.src='https://placehold.co/400x400/FF6B1A/0A0A0B?text=RD'" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile info -->
+          <div class="flex-1 min-w-0 space-y-5">
+
+            <!-- Username row -->
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+              <div class="flex items-center justify-center sm:justify-start gap-2">
+                <h1 class="text-xl font-normal tracking-tight text-ink-100">dzikraihan</h1>
+                <i data-lucide="badge-check" class="w-5 h-5 text-ember-500"></i>
+              </div>
+
+              <div class="flex items-center gap-2 justify-center sm:justify-start">
+                <a href="#contact" class="px-5 py-1.5 rounded-lg bg-ember-500 hover:bg-ember-600 text-white text-sm font-bold transition">
+                  Hubungi
+                </a>
+                <button onclick="copyContact('Dzikraihan04@gmail.com', 'Email berhasil disalin!')" class="px-5 py-1.5 rounded-lg bg-ink-750 hover:bg-ink-700 text-ink-100 text-sm font-bold transition">
+                  Salin Email
+                </button>
+                <a href="CV-RAIHAN_ADZ_DZIKRA copy.pdf" target="_blank" aria-label="Lihat CV" class="p-2 rounded-lg bg-ink-750 hover:bg-ink-700 text-ink-100 transition">
+                  <i data-lucide="file-text" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Stats row -->
+            <div class="flex items-center justify-around sm:justify-start sm:gap-10 py-3 sm:py-0 border-y sm:border-0 border-ink-700">
+              <div class="text-center sm:text-left">
+                <span id="stat-posts" class="font-bold text-ink-100">6</span>
+                <span class="text-ink-400 text-sm sm:ml-1 block sm:inline">dokumentasi</span>
+              </div>
+              <div class="text-center sm:text-left">
+                <span class="font-bold text-ink-100">2</span>
+                <span class="text-ink-400 text-sm sm:ml-1 block sm:inline">medali emas</span>
+              </div>
+              <div class="text-center sm:text-left">
+                <span class="font-bold text-ink-100">5+</span>
+                <span class="text-ink-400 text-sm sm:ml-1 block sm:inline">tahun berkarya</span>
+              </div>
+            </div>
+
+            <!-- Bio -->
+            <div class="space-y-1.5 text-center sm:text-left">
+              <p class="font-bold text-ink-100">Raihan Adz Dzikra</p>
+              <p class="text-sm text-ember-400 font-medium">Law Student • Legal-Tech & Media Innovator</p>
+              <p class="text-sm text-ink-300 leading-relaxed max-w-lg">
+                Mahasiswa Fakultas Hukum Universitas Airlangga. Co-Founder &amp; CTO <span class="text-ink-100 font-semibold">HerblocX</span> — Gold Medalist WYIE Malaysia &amp; IPITEX Thailand. Menjembatani hukum, Web3, dan produksi media kreatif.
+              </p>
+              <p class="text-sm text-ink-400 flex items-center justify-center sm:justify-start gap-1.5 pt-1">
+                <i data-lucide="map-pin" class="w-4 h-4 text-ember-500"></i>
+                Surabaya, Jawa Timur, Indonesia
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story Highlights -->
+        <div class="mt-10 flex gap-6 sm:gap-9 overflow-x-auto no-scrollbar pb-2">
+          <a href="#about" class="group flex flex-col items-center gap-2 shrink-0">
+            <span class="glass-bubble w-[68px] h-[68px] sm:w-[76px] sm:h-[76px] text-3xl"><span>⚖️</span></span>
+            <span class="text-[11px] font-medium text-ink-400 group-hover:text-ink-100 transition">Hukum</span>
+          </a>
+          <a href="#herblocx" class="group flex flex-col items-center gap-2 shrink-0">
+            <span class="glass-bubble w-[68px] h-[68px] sm:w-[76px] sm:h-[76px] text-3xl"><span>💻</span></span>
+            <span class="text-[11px] font-medium text-ink-400 group-hover:text-ink-100 transition">Legal-Tech</span>
+          </a>
+          <a href="#achievements" class="group flex flex-col items-center gap-2 shrink-0">
+            <span class="glass-bubble w-[68px] h-[68px] sm:w-[76px] sm:h-[76px] text-3xl"><span>🏆</span></span>
+            <span class="text-[11px] font-medium text-ink-400 group-hover:text-ink-100 transition">Prestasi</span>
+          </a>
+          <a href="#gallery" class="group flex flex-col items-center gap-2 shrink-0">
+            <span class="glass-bubble w-[68px] h-[68px] sm:w-[76px] sm:h-[76px] text-3xl"><span>📸</span></span>
+            <span class="text-[11px] font-medium text-ink-400 group-hover:text-ink-100 transition">Media</span>
+          </a>
+          <a href="#experience" class="group flex flex-col items-center gap-2 shrink-0">
+            <span class="glass-bubble w-[68px] h-[68px] sm:w-[76px] sm:h-[76px] text-3xl"><span>🎬</span></span>
+            <span class="text-[11px] font-medium text-ink-400 group-hover:text-ink-100 transition">Produksi</span>
+          </a>
+          <a href="#about" class="group flex flex-col items-center gap-2 shrink-0">
+            <span class="glass-bubble w-[68px] h-[68px] sm:w-[76px] sm:h-[76px] text-3xl"><span>🎓</span></span>
+            <span class="text-[11px] font-medium text-ink-400 group-hover:text-ink-100 transition">Kampus</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Profile tab bar -->
+      <div class="border-t border-ink-700">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-around sm:justify-center sm:gap-14">
+          <a href="#gallery" class="flex items-center gap-2 py-4 text-[11px] font-bold uppercase tracking-widest text-ink-100 border-t-2 border-ember-500 -mt-px">
+            <i data-lucide="grid-3x3" class="w-4 h-4"></i>
+            <span class="hidden sm:inline">Dokumentasi</span>
+          </a>
+          <a href="#achievements" class="flex items-center gap-2 py-4 text-[11px] font-bold uppercase tracking-widest text-ink-400 hover:text-ink-100 transition">
+            <i data-lucide="award" class="w-4 h-4"></i>
+            <span class="hidden sm:inline">Prestasi</span>
+          </a>
+          <a href="#experience" class="flex items-center gap-2 py-4 text-[11px] font-bold uppercase tracking-widest text-ink-400 hover:text-ink-100 transition">
+            <i data-lucide="briefcase" class="w-4 h-4"></i>
+            <span class="hidden sm:inline">Pengalaman</span>
+          </a>
+          <a href="#contact" class="flex items-center gap-2 py-4 text-[11px] font-bold uppercase tracking-widest text-ink-400 hover:text-ink-100 transition">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+            <span class="hidden sm:inline">Kontak</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT (post card) ============ -->
+    <section id="about" class="py-14">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="glass-icon w-11 h-11 text-xl"><span>⚖️</span></span>
+          <div>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-ink-100">Profil &amp; Rekam Jejak</h2>
+            <p class="text-xs text-ink-400">Menyatukan legalitas, tekno-sains, dan komunikasi visual</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+          <!-- Bio card -->
+          <article class="md:col-span-7 bg-ink-850 border border-ink-700 rounded-2xl overflow-hidden">
+            <header class="flex items-center gap-3 px-5 py-3.5 border-b border-ink-700">
+              <span class="w-9 h-9 rounded-full bg-gradient-to-tr from-ember-600 to-ember-300 flex items-center justify-center text-xs font-bold text-white">RD</span>
+              <div class="leading-tight">
+                <p class="text-sm font-semibold text-ink-100 flex items-center gap-1.5">
+                  dzikraihan
+                  <i data-lucide="badge-check" class="w-3.5 h-3.5 text-ember-500"></i>
+                </p>
+                <p class="text-[11px] text-ink-400">Ringkasan Profil</p>
+              </div>
+            </header>
+
+            <div class="p-5 space-y-4">
+              <p class="text-sm text-ink-300 leading-relaxed">
+                Mahasiswa Fakultas Hukum Universitas Airlangga yang berfokus mendalami persimpangan antara regulasi hukum dan inovasi teknologi digital modern. Sebagai Co-Founder &amp; CTO HerblocX, memimpin perancangan kerangka kerja kepatuhan hukum komoditas ekspor, perlindungan merek DJKI, sertifikasi global (EUDR, FDA, JAS), sekaligus mengonseptualisasikan alur sistem Layer-2 Web3.
+              </p>
+              <p class="text-sm text-ink-300 leading-relaxed">
+                Didukung lebih dari lima tahun pengalaman dalam produksi media (penyutradaraan, pilot drone, dan sinematografi), Raihan menggabungkan ketajaman analisis yuridis dengan kemampuan storytelling visual berdaya saing tinggi dalam kompetisi pitching bisnis internasional.
+              </p>
+            </div>
+          </article>
+
+          <!-- Education cards -->
+          <div class="md:col-span-5 space-y-5">
+            <div class="bg-ink-850 border border-ink-700 rounded-2xl p-5 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-md bg-ember-500/15 text-ember-400 text-[11px] font-bold">2025 — Sekarang</span>
+                <span class="text-[11px] font-semibold text-ink-400">Semester 3</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="glass-icon w-10 h-10 text-lg shrink-0"><span>🎓</span></span>
+                <div>
+                  <h3 class="font-serif font-bold text-base text-ink-100">Universitas Airlangga, Surabaya</h3>
+                  <p class="text-[11px] text-ember-400 font-medium">Program Sarjana Ilmu Hukum (S.H.)</p>
+                  <div class="mt-2 text-[11px] text-ink-400 space-y-0.5">
+                    <p>NIM: 131251383</p>
+                    <p class="text-ink-200 font-semibold">IPK: 3.40 / 4.00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-ink-850 border border-ink-700 rounded-2xl p-5 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-md bg-ink-750 text-ink-300 text-[11px] font-bold">2020 — 2023</span>
+                <span class="text-[11px] font-semibold text-ink-400">Sidoarjo</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="glass-icon w-10 h-10 text-lg shrink-0"><span>📚</span></span>
+                <div>
+                  <h3 class="font-serif font-bold text-base text-ink-100">SMA Progresif Bumi Shalawat</h3>
+                  <p class="text-[11px] text-ink-400">Jurusan Ilmu Pengetahuan Sosial (IPS)</p>
+                  <p class="text-[11px] text-ink-400 mt-2">Memimpin divisi visual media &amp; rekam jejak juara film pendek santri.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HERBLOCX (featured post) ============ -->
+    <section id="herblocx" class="py-14">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="relative bg-ink-850 border border-ink-700 rounded-3xl overflow-hidden">
+          <div class="absolute -right-24 -bottom-24 w-80 h-80 rounded-full bg-ember-600/20 blur-[100px] pointer-events-none"></div>
+
+          <header class="relative flex items-center gap-3 px-5 sm:px-8 py-4 border-b border-ink-700">
+            <span class="glass-icon w-11 h-11 text-xl"><span>🔗</span></span>
+            <div class="leading-tight flex-1">
+              <p class="text-sm font-bold text-ink-100">HerblocX</p>
+              <p class="text-[11px] text-ink-400">Blockchain &amp; Agritech Traceability · 2025 — Sekarang</p>
+            </div>
+            <span class="px-2.5 py-1 rounded-md bg-ember-500/15 text-ember-400 text-[10px] font-bold uppercase tracking-wider">Flagship</span>
+          </header>
+
+          <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8 p-5 sm:p-8">
+            <div class="lg:col-span-7 space-y-5">
+              <div class="flex items-baseline gap-3">
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-ink-100">HerblocX</h2>
+                <span class="text-sm text-ember-400 font-semibold">Co-Founder &amp; CTO</span>
+              </div>
+
+              <p class="text-sm text-ink-300 leading-relaxed">
+                Marketplace B2B/B2C berbasis blockchain untuk ekspor dan impor komoditas herbal unggulan Indonesia. Dirancang guna menjamin transparansi data, integritas transaksi, serta ketelusuran produk dari petani lokal hingga pembeli mancanegara.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-ink-800 border border-ink-700 rounded-2xl p-4 space-y-2">
+                  <div class="flex items-center gap-2">
+                    <span class="glass-icon w-9 h-9 text-base"><span>⚖️</span></span>
+                    <span class="text-xs font-bold text-ink-100">Legal &amp; Compliance</span>
+                  </div>
+                  <p class="text-[11px] text-ink-400 leading-relaxed">
+                    Strategi perlindungan hak merek DJKI serta pemetaan regulasi ekspor global (EUDR, FDA, JAS).
+                  </p>
+                </div>
+
+                <div class="bg-ink-800 border border-ink-700 rounded-2xl p-4 space-y-2">
+                  <div class="flex items-center gap-2">
+                    <span class="glass-icon w-9 h-9 text-base"><span>⚙️</span></span>
+                    <span class="text-xs font-bold text-ink-100">Web2 + Web3 Layer-2</span>
+                  </div>
+                  <p class="text-[11px] text-ink-400 leading-relaxed">
+                    Verifikasi dokumen anti-fraud terdesentralisasi, pelacakan real-time, dan asisten pembelian bertenaga AI.
+                  </p>
+                </div>
+              </div>
+
+              <div class="space-y-2.5 text-xs text-ink-300">
+                <p class="flex items-start gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-ember-500 mt-0.5 shrink-0"></i>
+                  <span><strong class="text-ink-100">Dual-Persona UX:</strong> Mengakomodasi petani lokal dengan literasi digital sederhana dan importir institusional internasional.</span>
+                </p>
+                <p class="flex items-start gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-ember-500 mt-0.5 shrink-0"></i>
+                  <span><strong class="text-ink-100">Global Pitching:</strong> Menulis proposal dan mempresentasikan business pitch berbahasa Inggris di hadapan panel juri internasional di Malaysia &amp; Thailand.</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Awards -->
+            <div class="lg:col-span-5 bg-ink-800/80 border border-ink-700 rounded-2xl p-5 space-y-4">
+              <h3 class="font-serif font-bold text-base text-ink-100 flex items-center gap-2.5">
+                <span class="glass-icon w-9 h-9 text-base"><span>🏆</span></span>
+                Validasi Prestasi
+              </h3>
+
+              <div class="space-y-3">
+                <div class="p-3.5 rounded-xl bg-ink-850 border border-ink-700 space-y-1">
+                  <div class="flex items-center justify-between text-[11px] font-bold">
+                    <span class="text-ember-400">Gold Medal (IoT)</span>
+                    <span class="text-ink-500">Kuala Lumpur, 2025</span>
+                  </div>
+                  <p class="text-sm font-semibold text-ink-100">WYIE 2025 Malaysia</p>
+                  <p class="text-[11px] text-ink-400">World Young Inventors Exhibition at ITEX KL.</p>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-ink-850 border border-ink-700 space-y-1">
+                  <div class="flex items-center justify-between text-[11px] font-bold">
+                    <span class="text-ember-400">Gold Medal</span>
+                    <span class="text-ink-500">Bangkok, 2026</span>
+                  </div>
+                  <p class="text-sm font-semibold text-ink-100">IPITEX 2026 Thailand</p>
+                  <p class="text-[11px] text-ink-400">Organized by NRCT under IFIA, BITEC Bangkok.</p>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-ink-850 border border-ink-700 space-y-1">
+                  <div class="flex items-center justify-between text-[11px] font-bold">
+                    <span class="text-ink-200">Top 8 Finalist</span>
+                    <span class="text-ink-500">Bandung, 2026</span>
+                  </div>
+                  <p class="text-sm font-semibold text-ink-100">Hult Prize Indonesia Summit</p>
+                  <p class="text-[11px] text-ink-400">Terpilih dari 2.000+ tim startup mahasiswa se-Indonesia di ITB.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ACHIEVEMENTS ============ -->
+    <section id="achievements" class="py-14">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-7">
+          <div class="flex items-center gap-3">
+            <span class="glass-icon w-11 h-11 text-xl"><span>🏆</span></span>
+            <div>
+              <h2 class="font-serif text-2xl sm:text-3xl font-bold text-ink-100">Rekam Jejak Kompetisi</h2>
+              <p class="text-xs text-ink-400">Kompetisi inovasi global &amp; produksi konten visual</p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 p-1 rounded-xl bg-ink-850 border border-ink-700 w-fit">
+            <button onclick="filterAchievements('all')" class="achieve-btn px-3.5 py-1.5 rounded-lg text-[11px] font-bold transition bg-ink-700 text-ink-100" data-filter="all">Semua</button>
+            <button onclick="filterAchievements('international')" class="achieve-btn px-3.5 py-1.5 rounded-lg text-[11px] font-bold transition text-ink-400 hover:text-ink-100" data-filter="international">Internasional</button>
+            <button onclick="filterAchievements('national')" class="achieve-btn px-3.5 py-1.5 rounded-lg text-[11px] font-bold transition text-ink-400 hover:text-ink-100" data-filter="national">Nasional</button>
+            <button onclick="filterAchievements('regional')" class="achieve-btn px-3.5 py-1.5 rounded-lg text-[11px] font-bold transition text-ink-400 hover:text-ink-100" data-filter="regional">Regional</button>
+          </div>
+        </div>
+
+        <div id="achievements-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+          <div class="achievement-card bg-ink-850 border border-ink-700 rounded-2xl p-5 space-y-3.5 hover:border-ember-500/50 transition group" data-category="international">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-md bg-ember-500/15 text-ember-400 text-[11px] font-bold flex items-center gap-1.5">
+                <span>🥇</span> Gold Medal
+              </span>
+              <span class="text-[11px] text-ink-500">Januari 2026</span>
+            </div>
+            <div>
+              <h3 class="font-serif font-bold text-base text-ink-100 group-hover:text-ember-400 transition">IPITEX 2026 Thailand</h3>
+              <p class="text-[11px] text-ember-400/80 font-medium mt-0.5">Bangkok International IP &amp; Invention Exposition</p>
+            </div>
+            <p class="text-[11px] text-ink-400 leading-relaxed">
+              Diselenggarakan oleh National Research Council of Thailand (NRCT) di bawah naungan IFIA di BITEC Bangkok. Inovasi: HerblocX.
+            </p>
+            <div class="pt-1 text-[10px] font-bold uppercase tracking-wider text-ink-500">Internasional · Thailand</div>
+          </div>
+
+          <div class="achievement-card bg-ink-850 border border-ink-700 rounded-2xl p-5 space-y-3.5 hover:border-ember-500/50 transition group" data-category="international">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-md bg-ember-500/15 text-ember-400 text-[11px] font-bold flex items-center gap-1.5">
+                <span>🥇</span> Gold Medal
+              </span>
+              <span class="text-[11px] text-ink-500">2025</span>
+            </div>
+            <div>
+              <h3 class="font-serif font-bold text-base text-ink-100 group-hover:text-ember-400 transition">WYIE 2025 Malaysia</h3>
+              <p class="text-[11px] text-ember-400/80 font-medium mt-0.5">World Young Inventors Exhibition (IoT Category)</p>
+            </div>
+            <p class="text-[11px] text-ink-400 leading-relaxed">
+              Diselenggarakan bersamaan dengan International Invention, Innovation &amp; Technology Exhibition (ITEX) di Kuala Lumpur. Inovasi: HerblocX.
+            </p>
+            <div class="pt-1 text-[10px] font-bold uppercase tracking-wider text-ink-500">Internasional · Malaysia</div>
+          </div>
+
+          <div class="achievement-card bg-ink-850 border border-ink-700 rounded-2xl p-5 space-y-3.5 hover:border-ember-500/50 transition group" data-category="national">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-md bg-ink-750 text-ink-200 text-[11px] font-bold flex items-center gap-1.5">
+                <span>🎖️</span> Top 8 Finalist
+              </span>
+              <span class="text-[11px] text-ink-500">Mei 2026</span>
+            </div>
+            <div>
+              <h3 class="font-serif font-bold text-base text-ink-100 group-hover:text-ember-400 transition">Hult Prize Indonesia Summit</h3>
+              <p class="text-[11px] text-ember-400/80 font-medium mt-0.5">Institut Teknologi Bandung (ITB)</p>
+            </div>
+            <p class="text-[11px] text-ink-400 leading-relaxed">
+              Kompetisi startup mahasiswa terbesar di dunia; tim HerblocX terpilih sebagai Top 8 dari lebih dari 2.000 tim di tahap nasional.
+            </p>
+            <div class="pt-1 text-[10px] font-bold uppercase tracking-wider text-ink-500">Nasional</div>
+          </div>
+
+          <div class="achievement-card bg-ink-850 border border-ink-700 rounded-2xl p-5 space-y-3.5 hover:border-ember-500/50 transition group" data-category="national">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-md bg-ink-750 text-ink-200 text-[11px] font-bold flex items-center gap-1.5">
+                <span>🎬</span> 2nd Place
+              </span>
+              <span class="text-[11px] text-ink-500">2021</span>
+            </div>
+            <div>
+              <h3 class="font-serif font-bold text-base text-ink-100 group-hover:text-ember-400 transition">TikTok Short Video UGM</h3>
+              <p class="text-[11px] text-ember-400/80 font-medium mt-0.5">Universitas Gadjah Mada</p>
+            </div>
+            <p class="text-[11px] text-ink-400 leading-relaxed">
+              Kompetisi pembuatan video pendek kreatif berbasis riset pesan dan sinematografi edukatif berskala nasional.
+            </p>
+            <div class="pt-1 text-[10px] font-bold uppercase tracking-wider text-ink-500">Nasional</div>
+          </div>
+
+          <div class="achievement-card bg-ink-850 border border-ink-700 rounded-2xl p-5 space-y-3.5 hover:border-ember-500/50 transition group" data-category="regional">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-md bg-ember-500/15 text-ember-400 text-[11px] font-bold flex items-center gap-1.5">
+                <span>🥇</span> 1st Place
+              </span>
+              <span class="text-[11px] text-ink-500">2023</span>
+            </div>
+            <div>
+              <h3 class="font-serif font-bold text-base text-ink-100 group-hover:text-ember-400 transition">Reels Competition Wisata Bukit Mas</h3>
+              <p class="text-[11px] text-ember-400/80 font-medium mt-0.5">Commercial &amp; Cinematic Video</p>
+            </div>
+            <p class="text-[11px] text-ink-400 leading-relaxed">
+              Pemenang utama kompetisi video Reels kreatif dengan fokus visual arsitektural dan storytelling dinamis.
+            </p>
+            <div class="pt-1 text-[10px] font-bold uppercase tracking-wider text-ink-500">Regional</div>
+          </div>
+
+          <div class="achievement-card bg-ink-850 border border-ink-700 rounded-2xl p-5 space-y-3.5 hover:border-ember-500/50 transition group" data-category="regional">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-md bg-ember-500/15 text-ember-400 text-[11px] font-bold flex items-center gap-1.5">
+                <span>🏅</span> 1st &amp; 2nd Winner
+              </span>
+              <span class="text-[11px] text-ink-500">2021 &amp; 2024</span>
+            </div>
+            <div>
+              <h3 class="font-serif font-bold text-base text-ink-100 group-hover:text-ember-400 transition">Vlog &amp; Reels Creative Wins</h3>
+              <p class="text-[11px] text-ember-400/80 font-medium mt-0.5">Sidoarjo Bunkasai &amp; Mansion Nine</p>
+            </div>
+            <p class="text-[11px] text-ink-400 leading-relaxed">
+              Juara 1 Japanese Vlog Competition (Sidoarjo Bunkasai 2021) &amp; Juara 2 Reels Competition Mansion Nine (2024).
+            </p>
+            <div class="pt-1 text-[10px] font-bold uppercase tracking-wider text-ink-500">Regional</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE & SKILLS ============ -->
+    <section id="experience" class="py-14">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+
+          <div class="lg:col-span-7 space-y-7">
+            <div class="flex items-center gap-3">
+              <span class="glass-icon w-11 h-11 text-xl"><span>💼</span></span>
+              <div>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-ink-100">Pengabdian &amp; Produksi Kreatif</h2>
+                <p class="text-xs text-ink-400">Profesional, organisasi &amp; ekstrakurikuler</p>
+              </div>
+            </div>
+
+            <div class="relative pl-6 space-y-6 before:absolute before:left-[5px] before:top-3 before:bottom-3 before:w-px before:bg-ink-700">
+
+              <div class="relative">
+                <span class="absolute -left-[25px] top-4 w-2.5 h-2.5 rounded-full bg-ember-500 ring-4 ring-ink-900"></span>
+                <div class="bg-ink-850 border border-ink-700 rounded-2xl p-5 space-y-2.5">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-ember-500/15 text-ember-400 text-[10px] font-bold uppercase tracking-wider">
+                    <i data-lucide="briefcase" class="w-3 h-3"></i> Pekerjaan Profesional
+                  </span>
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <h3 class="font-serif font-bold text-base text-ink-100">Alpha Project — Digital Agency</h3>
+                    <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-md bg-ink-750 text-ink-300">2024 — 2025</span>
+                  </div>
+                  <p class="text-[11px] text-ember-400 font-semibold">Head of Production / Content Director · @alphasosmed.project</p>
+                  <ul class="text-[11px] text-ink-400 list-disc list-inside space-y-1 pt-0.5">
+                    <li>Memimpin perencanaan konten mingguan klien korporat, perancangan struktur konten, dan konsep visual.</li>
+                    <li>Mengarahkan tim produksi dari brainstorming, penulisan skrip, filming, hingga supervisi pascaproduksi.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="relative">
+                <span class="absolute -left-[25px] top-4 w-2.5 h-2.5 rounded-full bg-ember-500 ring-4 ring-ink-900"></span>
+                <div class="bg-ink-850 border border-ink-700 rounded-2xl p-5 space-y-2.5">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-ink-750 text-ink-200 text-[10px] font-bold uppercase tracking-wider">
+                    <i data-lucide="users" class="w-3 h-3"></i> Organisasi Media
+                  </span>
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <h3 class="font-serif font-bold text-base text-ink-100">Progresif TV — Bumi Shalawat</h3>
+                    <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-md bg-ink-750 text-ink-300">2020 — 2023</span>
+                  </div>
+                  <p class="text-[11px] text-ember-400 font-semibold">Director, Editor, Cameraman, Drone Pilot &amp; Creative Director</p>
+                  <ul class="text-[11px] text-ink-400 list-disc list-inside space-y-1 pt-0.5">
+                    <li>Memproduksi program unggulan: Senandung Santri, Yuk Ngaji, dan Kak Sholla.</li>
+                    <li>Liputan udara skala besar untuk acara Haul &amp; Harlah Pondok Pesantren Bumi Shalawat.</li>
+                    <li>Video editor utama untuk peringatan Hari Santri Nasional 2022.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="relative">
+                <span class="absolute -left-[25px] top-4 w-2.5 h-2.5 rounded-full bg-ember-500 ring-4 ring-ink-900"></span>
+                <div class="bg-ink-850 border border-ink-700 rounded-2xl p-5 space-y-2.5">
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-ink-750 text-ink-200 text-[10px] font-bold uppercase tracking-wider">
+                    <i data-lucide="graduation-cap" class="w-3 h-3"></i> Ekstrakurikuler SMA
+                  </span>
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <h3 class="font-serif font-bold text-base text-ink-100">Smasif Production &amp; Campus Expo</h3>
+                    <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-md bg-ink-750 text-ink-300">2020 — 2023</span>
+                  </div>
+                  <p class="text-[11px] text-ember-400 font-semibold">Director, Film Editor &amp; Research Coordinator</p>
+                  <ul class="text-[11px] text-ink-400 list-disc list-inside space-y-1 pt-0.5">
+                    <li>Sutradara &amp; editor film pendek: Sentury Rewind, Stay Positive, dan The Tale of Ramayana.</li>
+                    <li>Koordinator riset &amp; desainer layout Campus Expo, menyusun struktur media sosial dan live reporting.</li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Skills -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="flex items-center gap-3">
+              <span class="glass-icon w-11 h-11 text-xl"><span>🛠️</span></span>
+              <div>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-ink-100">Keahlian</h2>
+                <p class="text-xs text-ink-400">Kompetensi inti</p>
+              </div>
+            </div>
+
+            <div class="bg-ink-850 border border-ink-700 rounded-2xl p-5 space-y-5">
+              <div class="space-y-3">
+                <div class="flex items-center gap-2.5 text-sm font-bold text-ink-100">
+                  <span class="glass-icon w-9 h-9 text-base"><span>💻</span></span>
+                  Teknologi &amp; Legal-Tech
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1.5 rounded-lg bg-ember-500/10 border border-ember-500/25 text-ember-300 text-[11px] font-medium">Blockchain &amp; Web3 Architecture</span>
+                  <span class="px-3 py-1.5 rounded-lg bg-ember-500/10 border border-ember-500/25 text-ember-300 text-[11px] font-medium">System Flow &amp; UI/UX Logic</span>
+                  <span class="px-3 py-1.5 rounded-lg bg-ember-500/10 border border-ember-500/25 text-ember-300 text-[11px] font-medium">AI Prompt Engineering</span>
+                  <span class="px-3 py-1.5 rounded-lg bg-ember-500/10 border border-ember-500/25 text-ember-300 text-[11px] font-medium">Spreadsheet Automation</span>
+                  <span class="px-3 py-1.5 rounded-lg bg-ember-500/10 border border-ember-500/25 text-ember-300 text-[11px] font-medium">DJKI Trademark &amp; Compliance</span>
+                </div>
+              </div>
+
+              <div class="space-y-3 pt-4 border-t border-ink-700">
+                <div class="flex items-center gap-2.5 text-sm font-bold text-ink-100">
+                  <span class="glass-icon w-9 h-9 text-base"><span>📸</span></span>
+                  Produksi Kreatif &amp; Multimedia
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1.5 rounded-lg bg-ink-750 text-ink-200 text-[11px] font-medium">Adobe Premiere Pro</span>
+                  <span class="px-3 py-1.5 rounded-lg bg-ink-750 text-ink-200 text-[11px] font-medium">Adobe After Effects</span>
+                  <span class="px-3 py-1.5 rounded-lg bg-ink-750 text-ink-200 text-[11px] font-medium">Drone Cinematography</span>
+                  <span class="px-3 py-1.5 rounded-lg bg-ink-750 text-ink-200 text-[11px] font-medium">Motion Graphics &amp; 3D</span>
+                  <span class="px-3 py-1.5 rounded-lg bg-ink-750 text-ink-200 text-[11px] font-medium">Canva &amp; Visual Layout</span>
+                </div>
+              </div>
+
+              <div class="space-y-3 pt-4 border-t border-ink-700">
+                <div class="flex items-center gap-2.5 text-sm font-bold text-ink-100">
+                  <span class="glass-icon w-9 h-9 text-base"><span>🌐</span></span>
+                  Bahasa &amp; Komunikasi
+                </div>
+                <div class="space-y-2 text-[11px]">
+                  <div class="flex justify-between items-center">
+                    <span class="text-ink-200 font-medium">Bahasa Indonesia</span>
+                    <span class="text-ink-400">Penutur Asli</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-ink-200 font-medium">Bahasa Inggris</span>
+                    <span class="text-ink-400">Professional Working</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GALLERY = IG FEED ============ -->
+    <section id="gallery" class="py-14">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center gap-3 mb-7">
+          <span class="glass-icon w-11 h-11 text-xl"><span>📸</span></span>
+          <div>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-ink-100">Dokumentasi Kegiatan</h2>
+            <p class="text-xs text-ink-400">Pameran inovasi internasional, akademik hukum, liputan drone &amp; media kreatif</p>
+          </div>
+        </div>
+
+        <div id="gallery-groups" class="space-y-10"></div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="py-14 pb-24">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="relative bg-ink-850 border border-ink-700 rounded-3xl p-7 sm:p-10 text-center space-y-7 overflow-hidden">
+          <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full bg-ember-500/20 blur-[90px] pointer-events-none"></div>
+
+          <div class="relative space-y-3">
+            <span class="glass-icon w-14 h-14 text-2xl mx-auto"><span>✉️</span></span>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-ink-100">Mari Berkolaborasi</h2>
+            <p class="text-sm text-ink-400 max-w-md mx-auto">
+              Terbuka untuk kolaborasi riset hukum teknologi, implementasi Web3, kompetisi startup, atau penyutradaraan konten kreatif.
+            </p>
+          </div>
+
+          <div class="relative grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+            <div class="p-4 rounded-2xl bg-ink-800 border border-ink-700 flex items-center justify-between gap-3">
+              <div class="min-w-0">
+                <span class="text-[10px] uppercase tracking-wider text-ink-500 font-bold">Email</span>
+                <p class="text-sm font-medium text-ink-100 truncate select-all">Dzikraihan04@gmail.com</p>
+              </div>
+              <button onclick="copyContact('Dzikraihan04@gmail.com', 'Email berhasil disalin!')" aria-label="Salin Email" class="p-2.5 rounded-xl bg-ink-750 hover:bg-ember-500 hover:text-white text-ink-200 transition shrink-0">
+                <i data-lucide="copy" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-ink-800 border border-ink-700 flex items-center justify-between gap-3">
+              <div class="min-w-0">
+                <span class="text-[10px] uppercase tracking-wider text-ink-500 font-bold">WhatsApp</span>
+                <p class="text-sm font-medium text-ink-100 truncate select-all">+62 851-7211-0196</p>
+              </div>
+              <button onclick="copyContact('+6285172110196', 'Nomor telepon disalin!')" aria-label="Salin Kontak" class="p-2.5 rounded-xl bg-ink-750 hover:bg-ember-500 hover:text-white text-ink-200 transition shrink-0">
+                <i data-lucide="copy" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="relative pt-5 border-t border-ink-700 flex flex-wrap items-center justify-center gap-5 text-[11px] text-ink-400">
+            <span class="inline-flex items-center gap-1.5">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-ember-500"></i>
+              Surabaya, Jawa Timur
+            </span>
+            <span class="inline-flex items-center gap-1.5">
+              <i data-lucide="at-sign" class="w-3.5 h-3.5 text-ember-500"></i>
+              alphasosmed.project
+            </span>
+            <span class="inline-flex items-center gap-1.5">
+              <i data-lucide="briefcase" class="w-3.5 h-3.5 text-ember-500"></i>
+              Co-Founder HerblocX
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ IG POST MODAL ============ -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-sm items-center justify-center p-3 sm:p-6">
+    <div class="relative w-full max-w-2xl bg-ink-850 border border-ink-700 rounded-2xl overflow-hidden flex flex-col max-h-[92vh]">
+
+      <!-- Post header -->
+      <header class="flex items-center gap-3 px-4 py-3 border-b border-ink-700 shrink-0">
+        <span class="w-9 h-9 rounded-full p-[2px] bg-gradient-to-tr from-ember-600 to-ember-300 shrink-0">
+          <img src="Photo_asset/web/hero-profile.jpg" alt="" class="w-full h-full rounded-full object-cover border-2 border-ink-850"
+               onerror="this.src='https://placehold.co/80x80/FF6B1A/0A0A0B?text=RD'">
+        </span>
+        <div class="leading-tight min-w-0 flex-1">
+          <p class="text-sm font-semibold text-ink-100 flex items-center gap-1.5">
+            dzikraihan
+            <i data-lucide="badge-check" class="w-3.5 h-3.5 text-ember-500"></i>
+          </p>
+          <p id="lightbox-location" class="text-[11px] text-ink-400 truncate">Surabaya, Indonesia</p>
+        </div>
+        <button onclick="closeLightbox()" aria-label="Tutup" class="p-2 rounded-full hover:bg-ink-750 text-ink-300 transition shrink-0">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </header>
+
+      <div class="overflow-y-auto custom-scrollbar">
+        <!-- Image + carousel -->
+        <div class="relative bg-black flex items-center justify-center">
+          <img id="lightbox-img" src="" alt="" class="w-full h-auto object-contain max-h-[55vh]">
+
+          <button id="lightbox-prev" onclick="lightboxPrev()" aria-label="Foto sebelumnya" class="hidden absolute left-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-ink-900/70 hover:bg-ink-900 text-white transition">
+            <i data-lucide="chevron-left" class="w-5 h-5"></i>
+          </button>
+          <button id="lightbox-next" onclick="lightboxNext()" aria-label="Foto berikutnya" class="hidden absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-ink-900/70 hover:bg-ink-900 text-white transition">
+            <i data-lucide="chevron-right" class="w-5 h-5"></i>
+          </button>
+
+          <span id="lightbox-counter" class="hidden absolute top-3 right-3 px-2.5 py-1 rounded-full bg-ink-900/75 text-white text-[11px] font-semibold">1/1</span>
+          <div id="lightbox-dots" class="hidden absolute bottom-3 inset-x-0 items-center justify-center gap-1.5"></div>
+        </div>
+
+        <!-- Action row -->
+        <div class="flex items-center gap-4 px-4 py-3">
+          <button id="post-like" onclick="toggleLike()" aria-label="Suka" class="text-ink-100 hover:text-ember-400 transition">
+            <i data-lucide="heart" class="w-6 h-6"></i>
+          </button>
+          <button onclick="sharePost()" aria-label="Bagikan" class="text-ink-100 hover:text-ember-400 transition">
+            <i data-lucide="send" class="w-6 h-6"></i>
+          </button>
+          <button id="post-save" onclick="toggleSave()" aria-label="Simpan" class="ml-auto text-ink-100 hover:text-ember-400 transition">
+            <i data-lucide="bookmark" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+        <!-- Caption -->
+        <div class="px-4 pb-5 space-y-2">
+          <span id="lightbox-badge" class="inline-block px-2.5 py-1 rounded-md bg-ember-500/15 text-ember-400 text-[11px] font-bold">Kategori</span>
+          <h3 id="lightbox-title" class="font-serif font-bold text-lg text-ink-100 leading-snug">Judul Kegiatan</h3>
+          <p class="text-sm text-ink-300 leading-relaxed">
+            <span class="font-semibold text-ink-100">dzikraihan</span>
+            <span id="lightbox-desc">Keterangan lengkap dokumentasi.</span>
+          </p>
+          <p id="lightbox-date" class="text-[11px] uppercase tracking-wider text-ink-500 pt-1">2026</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Documentation feed data
+    const documentationData = [
+      {
+        id: 'doc-1',
+        title: 'Presentasi HerblocX - IPITEX Bangkok 2026',
+        category: 'inovasi',
+        categoryLabel: 'Inovasi & Pitch',
+        location: 'BITEC, Bangkok, Thailand',
+        date: 'Januari 2026',
+        desc: 'Mempresentasikan inovasi sistem pelacakan berbasis blockchain HerblocX dan strategi kepatuhan hukum komoditas herbal di hadapan dewan juri internasional National Research Council of Thailand (NRCT).',
+        imgUrl: 'Photo_asset/web/ipitex-gold-medal-awarding.jpg',
+        images: [
+          {
+            url: 'Photo_asset/web/ipitex-gold-medal-awarding.jpg',
+            caption: 'Momen penyerahan Gold Medal IPITEX 2026 bersama panel juri internasional di BITEC Bangkok.'
+          },
+          {
+            url: 'Photo_asset/web/ipitex-gold-medal-award.jpg',
+            caption: 'Sesi foto bersama tim usai menerima penghargaan Gold Medal IPITEX 2026 Thailand.'
+          },
+          {
+            url: 'Photo_asset/web/ipitex-booth.jpg',
+            caption: 'Booth pameran HerblocX di IPITEX 2026, memamerkan riset platform blockchain kepada juri dan pengunjung.'
+          }
+        ]
+      },
+      {
+        id: 'doc-2',
+        title: 'Booth & Ekshibisi WYIE Malaysia 2025',
+        category: 'inovasi',
+        categoryLabel: 'Inovasi & Pitch',
+        location: 'Kuala Lumpur, Malaysia',
+        date: '2025',
+        desc: 'Sesi temu pembeli dan panel inovator di Kuala Lumpur Convention Centre. Raihan menjelaskan arsitektur Web3 Layer-2 dan validasi dokumen anti-fraud komoditas herbal.',
+        imgUrl: 'Photo_asset/web/wyie-gold-medal.jpg',
+        images: [
+          {
+            url: 'Photo_asset/web/wyie-gold-medal.jpg',
+            caption: 'Momen penerimaan Gold Medal kategori IoT pada WYIE 2025 Award Presentation Ceremony, ITEX\'25 Kuala Lumpur.'
+          },
+          {
+            url: 'Photo_asset/web/wyie-booth.jpg',
+            caption: 'Booth presentasi HerblocX di WYIE 2025, mendemonstrasikan platform kepada pengunjung pameran.'
+          }
+        ]
+      },
+      {
+        id: 'doc-4',
+        title: 'National Summit Hult Prize 2026 di ITB',
+        category: 'inovasi',
+        categoryLabel: 'Inovasi & Pitch',
+        location: 'East Auditorium ITB, Bandung',
+        date: 'Mei 2026',
+        desc: 'Berkompetisi di East Auditorium ITB bersama tim HerblocX, lolos sebagai Top 8 Finalist dari 2.000+ tim di seluruh perguruan tinggi di Indonesia.',
+        imgUrl: 'Photo_asset/web/hultprize-summit-team.jpg',
+        images: [
+          {
+            url: 'Photo_asset/web/hultprize-summit-team.jpg',
+            caption: 'Tim HerblocX memaparkan roadmap jangka panjang di panggung utama Hult Prize Indonesia Summit.'
+          },
+          {
+            url: 'Photo_asset/web/hultprize-summit-demo.jpg',
+            caption: 'Mendemonstrasikan alur login dan akses pelacakan platform HerblocX di hadapan dewan juri dan peserta.'
+          },
+          {
+            url: 'Photo_asset/web/hultprize-summit-pitch.jpg',
+            caption: 'Memaparkan fitur marketplace komoditas herbal (harga, kategori produk, dan status stok).'
+          },
+          {
+            url: 'Photo_asset/web/hultprize-final-pitch.jpg',
+            caption: 'Sesi final pitch: kepatuhan kualitas, sertifikasi JAS, dan hasil uji laboratorium komoditas herbal.'
+          }
+        ]
+      },
+      {
+        id: 'doc-3',
+        title: 'Aktivitas Akademik Fakultas Hukum UNAIR',
+        category: 'hukum',
+        categoryLabel: 'Akademik & Hukum',
+        location: 'Universitas Airlangga, Surabaya',
+        date: '2025 - 2026',
+        desc: 'Riset regulasi perlindungan kekayaan intelektual (DJKI), standardisasi ekspor (EUDR & FDA), dan diskusi hukum teknologi informasi di lingkungan kampus UNAIR.',
+        imgUrl: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        id: 'doc-5',
+        title: 'Operasi Drone & Liputan Acara Akbar',
+        category: 'kreatif',
+        categoryLabel: 'Media & Drone',
+        location: 'Pondok Pesantren Bumi Shalawat, Sidoarjo',
+        date: '2022 - 2023',
+        desc: 'Pengambilan gambar udara (drone pilot) untuk Haul, Harlah, serta Hari Santri Nasional bersama tim Progresif TV di Pondok Pesantren Bumi Shalawat.',
+        imgUrl: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        id: 'doc-6',
+        title: 'Penyutradaraan & Editing Film Smasif',
+        category: 'kreatif',
+        categoryLabel: 'Media & Drone',
+        location: 'Sidoarjo, Jawa Timur',
+        date: '2021 - 2023',
+        desc: 'Proses penyutradaraan dan pascaproduksi film pendek Sentury Rewind & The Tale of Ramayana, memadukan audio storytelling dan grading visual.',
+        imgUrl: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=900&q=80'
+      }
+    ];
+
+    const GALLERY_CATEGORY_ORDER = [
+      { key: 'inovasi', label: 'Inovasi & Pitch', emoji: '🏆' },
+      { key: 'hukum', label: 'Akademik & Hukum', emoji: '⚖️' },
+      { key: 'kreatif', label: 'Media & Drone', emoji: '📸' }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderGallery();
+      document.getElementById('stat-posts').innerText = documentationData.length;
+      lucide.createIcons();
+    });
+
+    // ---- Mobile menu ----
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('hidden');
+    }
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+    // ---- Clipboard + toast ----
+    function copyContact(text, message) {
+      navigator.clipboard.writeText(text)
+        .then(() => showToast(message || 'Teks berhasil disalin!'))
+        .catch(() => showToast('Gagal menyalin, silakan salin manual.'));
+    }
+
+    let toastTimer;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-message').innerText = msg;
+
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 3000);
+    }
+
+    // ---- Achievements filter ----
+    function filterAchievements(category) {
+      document.querySelectorAll('.achieve-btn').forEach(btn => {
+        const active = btn.dataset.filter === category;
+        btn.classList.toggle('bg-ink-700', active);
+        btn.classList.toggle('text-ink-100', active);
+        btn.classList.toggle('text-ink-400', !active);
+      });
+
+      document.querySelectorAll('.achievement-card').forEach(card => {
+        card.classList.toggle('hidden', category !== 'all' && card.dataset.category !== category);
+      });
+    }
+
+    // ---- Feed grid (grouped by category) ----
+    function renderGallery() {
+      const container = document.getElementById('gallery-groups');
+      container.innerHTML = '';
+
+      GALLERY_CATEGORY_ORDER.forEach(cat => {
+        const items = documentationData.filter(d => d.category === cat.key);
+        if (!items.length) return;
+
+        const group = document.createElement('div');
+        group.className = 'space-y-4';
+
+        const heading = document.createElement('h3');
+        heading.className = 'flex items-center gap-2.5 text-sm font-bold uppercase tracking-widest text-ink-300';
+        heading.innerHTML = `<span class="glass-icon w-8 h-8 text-sm"><span>${cat.emoji}</span></span> ${cat.label}`;
+        group.appendChild(heading);
+
+        const grid = document.createElement('div');
+        grid.className = 'grid grid-cols-3 gap-1.5 sm:gap-2';
+
+        items.forEach(item => {
+          const isMulti = Array.isArray(item.images) && item.images.length > 1;
+
+          const tile = document.createElement('button');
+          tile.className = 'group relative aspect-square overflow-hidden rounded-lg sm:rounded-xl bg-ink-800 border border-ink-700 focus:outline-none focus:ring-2 focus:ring-ember-500';
+          tile.setAttribute('aria-label', item.title);
+          tile.addEventListener('click', () => openLightbox(item));
+
+          tile.innerHTML = `
+            <img src="${item.imgUrl}" alt="${item.title}" loading="lazy"
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                 onerror="this.src='https://placehold.co/600x600/1A1A1D/FF6B1A?text=Dokumentasi'" />
+
+            ${isMulti ? `<span class="absolute top-2 right-2 text-white drop-shadow-lg"><i data-lucide="copy" class="w-4 h-4"></i></span>` : ''}
+
+            <span class="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+
+            <span class="absolute inset-x-0 bottom-0 p-2 sm:p-3 text-left opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span class="block text-[10px] sm:text-xs font-semibold text-white leading-tight line-clamp-2">${item.title}</span>
+              <span class="mt-1 flex items-center gap-1 text-[10px] text-ink-300">
+                <i data-lucide="image" class="w-3 h-3"></i> ${isMulti ? item.images.length : 1} foto
+              </span>
+            </span>
+          `;
+
+          grid.appendChild(tile);
+        });
+
+        group.appendChild(grid);
+        container.appendChild(group);
+      });
+
+      lucide.createIcons();
+    }
+
+    // ---- Post modal (single photo or carousel) ----
+    let lightboxImages = [];
+    let lightboxIndex = 0;
+
+    function openLightbox(item) {
+      const modal = document.getElementById('lightbox-modal');
+      const prevBtn = document.getElementById('lightbox-prev');
+      const nextBtn = document.getElementById('lightbox-next');
+      const dotsEl = document.getElementById('lightbox-dots');
+      const counterEl = document.getElementById('lightbox-counter');
+
+      lightboxImages = (Array.isArray(item.images) && item.images.length > 1)
+        ? item.images
+        : [{ url: item.imgUrl, caption: item.desc }];
+      lightboxIndex = 0;
+
+      const isMulti = lightboxImages.length > 1;
+
+      document.getElementById('lightbox-title').innerText = item.title;
+      document.getElementById('lightbox-badge').innerText = item.categoryLabel;
+      document.getElementById('lightbox-date').innerText = item.date;
+      document.getElementById('lightbox-location').innerText = item.location || 'Surabaya, Indonesia';
+
+      prevBtn.classList.toggle('hidden', !isMulti);
+      nextBtn.classList.toggle('hidden', !isMulti);
+      counterEl.classList.toggle('hidden', !isMulti);
+      dotsEl.classList.toggle('hidden', !isMulti);
+      dotsEl.classList.toggle('flex', isMulti);
+
+      dotsEl.innerHTML = '';
+      if (isMulti) {
+        lightboxImages.forEach(() => {
+          const dot = document.createElement('span');
+          dot.className = 'lightbox-dot w-1.5 h-1.5 rounded-full bg-white/40 transition';
+          dotsEl.appendChild(dot);
+        });
+      }
+
+      resetPostActions();
+      renderLightboxImage();
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function renderLightboxImage() {
+      const current = lightboxImages[lightboxIndex];
+      document.getElementById('lightbox-img').src = current.url;
+      document.getElementById('lightbox-desc').innerText = ' ' + (current.caption || '');
+      document.getElementById('lightbox-counter').innerText = `${lightboxIndex + 1}/${lightboxImages.length}`;
+
+      document.querySelectorAll('#lightbox-dots .lightbox-dot').forEach((dot, idx) => {
+        dot.className = 'lightbox-dot rounded-full transition ' +
+          (idx === lightboxIndex ? 'w-1.5 h-1.5 bg-white' : 'w-1.5 h-1.5 bg-white/40');
+      });
+    }
+
+    function lightboxPrev() {
+      lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+      renderLightboxImage();
+    }
+
+    function lightboxNext() {
+      lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
+      renderLightboxImage();
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('lightbox-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox-modal') closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (document.getElementById('lightbox-modal').classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lightboxPrev();
+      if (e.key === 'ArrowRight') lightboxNext();
+    });
+
+    // ---- Post actions (local only) ----
+    function resetPostActions() {
+      document.getElementById('post-like').classList.remove('liked');
+      document.getElementById('post-save').classList.remove('saved');
+    }
+
+    function toggleLike() {
+      document.getElementById('post-like').classList.toggle('liked');
+    }
+
+    function toggleSave() {
+      document.getElementById('post-save').classList.toggle('saved');
+    }
+
+    function sharePost() {
+      const title = document.getElementById('lightbox-title').innerText;
+      const desc = document.getElementById('lightbox-desc').innerText.trim();
+      copyContact(`${title} — ${desc}`, 'Keterangan dokumentasi disalin!');
+    }
+  </script>
+</body>
+</html>
